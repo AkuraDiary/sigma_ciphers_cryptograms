@@ -57,21 +57,28 @@ encoder_class_key = {
 
 if __name__ == '__main__':
     data = readFileContent('dummy-file.txt')
+    encoder = ""
 
     print("file : dummy-file.txt")
     print("Available algorithm : ", key)
     _key = input("Enter key / Algorithm: ")
-    print("using", key[_key] , "algorithm")
+
+    try:
+        print("using", key[_key] , "algorithm")    
+    except KeyError:
+        print("key doesn\'t exist")    
+        exit()
     
     print()
-
+    encoder = encoder_class_key[_key]
+    
     print("########## data ########## \n")
     print(data)
     
     print()
     
     print("########## encoded data ########## \n")
-    encoder = encoder_class_key[_key]
+    
     encoded_data = encoder.encode(readFileContent('dummy-file.txt'))
 
     print(encoded_data)
