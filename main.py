@@ -24,6 +24,13 @@ Atbash = atbash()
 Abza = ABZA()
 A1Z26 = A1Z26()
 
+key = {
+    "Caesar": Caesar,
+    "Atbash": Atbash,
+    "Abza": Abza,
+    "A1Z26": A1Z26
+}
+
 if __name__ == '__main__':
     data = readFileContent('dummy-file.txt')
 
@@ -35,5 +42,7 @@ if __name__ == '__main__':
     print("decoded data : ")
     decoded_caesar_data = Caesar.decode(readFileContent('dummy-file.txt'))
     print(decoded_caesar_data)
+    makeCopyOfFile('dummy-file.txt', decoded_caesar_data, 'Caesar')
+    print("encrypted file created")
     
 
