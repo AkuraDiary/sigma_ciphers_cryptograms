@@ -1,6 +1,11 @@
+from alphabet import alphabet
+
+
+import alphabet
+
 class ciphers():
     def __init__(self):
-        pass
+        self.alphabet = alphabet()
     
     def decode(data):
         return data
