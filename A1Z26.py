@@ -24,10 +24,11 @@ class A1Z26(ciphers):
         #A1Z26 algorithm
         result = ""
         for word in data:
-            if word.isalpha():
-                result += word
-            else:
+            if word.isnumeric():
                 result += self._alphabet.getLowercaseByIndex(int(word))
+            else:
+                result += word
+                
             
         return result
      
