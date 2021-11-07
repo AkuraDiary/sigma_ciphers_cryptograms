@@ -9,6 +9,12 @@ def readFileContent(filename):
     with open(filename, 'r') as f:
         return f.read()
 
+def makeCopyOfFile(oldFileName, newContent, key):
+    newFileName = "encrypted-"+ oldFileName + str(key)
+    with open(newFileName, 'w') as f:
+        f.write(newContent)
+
+
 if __name__ == '__main__':
     Caesar = caesar()
     data = readFileContent('dummy-file.txt')
