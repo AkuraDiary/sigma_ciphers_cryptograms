@@ -55,12 +55,12 @@ if __name__ == '__main__':
     data = readFileContent('dummy-file.txt')
 
     print("dummy-file.txt")
-    print("algorithm : Atbash")
+    print("algorithm : a1z26")
     print("data : ")
     print(data)
     print()
     print("encoded data : ")
-    encoded_atbash_data = Atbash.encode(readFileContent('dummy-file.txt'))
+    encoded_atbash_data = A1Z26.encode(readFileContent('dummy-file.txt'))
     print(encoded_atbash_data)
     makeCopyOfFile('dummy-file.txt', encoded_atbash_data, 'Caesar')
 
@@ -69,6 +69,6 @@ if __name__ == '__main__':
     print()
 
     print("reading encrypted File : ")
-    print(readEncryptedFile('encrypted-dummy-file.txt', 'atbash'))
+    print(readEncryptedFile('encrypted-dummy-file.txt', 'a1z26'))
     
 
