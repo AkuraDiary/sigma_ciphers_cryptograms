@@ -1,7 +1,10 @@
 class alphabet():
-    uppercase = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ' 
-    lowercase = 'abcdefghijklmnopqrstuvwxyz'
-    numbers = '0123456789'
+    uppercase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+    lowercase = "abcdefghijklmnopqrstuvwxyz"
+    numbers = "0123456789"
+
+    def Reverse(self, string):
+        return string[::-1]
 
     def getIndexOfLowercase(self, letter):
         return self.lowercase.index(letter)
@@ -18,7 +21,6 @@ class alphabet():
 if __name__ == '__main__':
     a = alphabet()
 
-    #trying out caesar algorithm
     
     
     

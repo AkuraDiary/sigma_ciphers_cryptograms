@@ -14,12 +14,13 @@ def makeCopyOfFile(oldFileName, newContent, key):
     with open(newFileName, 'w') as f:
         f.write(newContent)
 
-
+#algorithm
+Caesar = caesar()
 if __name__ == '__main__':
-    Caesar = caesar()
     data = readFileContent('dummy-file.txt')
 
     print("dummy-file.txt")
+    print("algorithm : Caesar")
     print("data : ")
     print(data)
     print()
