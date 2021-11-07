@@ -10,12 +10,12 @@ class A1Z26(ciphers):
             if word.isalpha():
                 if word.isupper():
                     index = self._alphabet.getIndexOfUppercase(word)
-                    reversed = self._alphabet.Reverse(self._alphabet.uppercase)
-                    result += reversed[index]
+                    #reversed = self._alphabet.Reverse(self._alphabet.uppercase)
+                    result += str(index)#reversed[index]
                 elif word.islower():
                     index = self._alphabet.getIndexOfLowercase(word)
-                    reversed = self._alphabet.Reverse(self._alphabet.lowercase)
-                    result += reversed[index]
+                    #reversed = self._alphabet.Reverse(self._alphabet.lowercase)
+                    result += str(index)#reversed[index]
             else:
                 result += word
         return result
@@ -25,19 +25,12 @@ class A1Z26(ciphers):
         result = ""
         for word in data:
             if word.isalpha():
-                if word.isupper():
-                    index = self._alphabet.getIndexOfUppercase(word)
-                    reversed = self._alphabet.Reverse(self._alphabet.uppercase)
-                    result += reversed[index]
-                elif word.islower():
-                    index = self._alphabet.getIndexOfLowercase(word)
-                    reversed = self._alphabet.Reverse(self._alphabet.lowercase)
-                    result += reversed[index]
-            else:
                 result += word
+            else:
+                result += self._alphabet.getLowercaseByIndex(int(word))
             
         return result
      
 if __name__ == "__main__":
     a = A1Z26()
-    print(a.decode("ABCDE"))
+    print(a.decode("012345"))
