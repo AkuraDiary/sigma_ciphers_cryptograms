@@ -1,9 +1,12 @@
 class ciphers():
     def __init__(self):
         pass
-
-    def coder(data):
-        return data
     
-    def decoder(data):
+    def decode(data):
         return data
+
+    def encode(data):
+        return data
+
+if __name__ == "__main__":
+    pass
