@@ -45,30 +45,46 @@ def readEncryptedFile(filename, key):
 
 
 key = {
-    "Caesar": Caesar,
-    "Atbash": Atbash,
-    "Abza": Abza,
-    "A1Z26": A1Z26
+    "C" : "Caesar",
+    "A" : "Atbash",
+    "AB" : "ABZA",
+    "A1" : "A1Z26"    
+}
+
+encoder_class_key = {
+    "C" : Caesar,
+    "A" : Atbash,
+    "AB" : Abza,
+    "A1" : A1Z26
 }
 
 if __name__ == '__main__':
     data = readFileContent('dummy-file.txt')
 
-    print("dummy-file.txt")
-    print("algorithm : a1z26")
+    print("file : dummy-file.txt")
+    print("algorithm : ", key)
+    _key = input("Enter key / Algorithm: ")
+    print("algorithm : ", key[_key])
+    
+    print()
+
     print("data : ")
     print(data)
+    
     print()
+    
     print("encoded data : ")
-    encoded_atbash_data = A1Z26.encode(readFileContent('dummy-file.txt'))
-    print(encoded_atbash_data)
-    makeCopyOfFile('dummy-file.txt', encoded_atbash_data, 'Caesar')
+    encoder = encoder_class_key[_key]
+    encoded_data = encoder.encode(readFileContent('dummy-file.txt'))
+
+    print(encoded_data)
+    makeCopyOfFile('dummy-file.txt', encoded_data, _key)
 
     print()
     print("encrypted / encoded file created")
     print()
 
     print("reading encrypted File / decoding file: ")
-    print(readEncryptedFile('encrypted-dummy-file.txt', 'a1z26'))
+    print(readEncryptedFile('encrypted-dummy-file.txt', key[_key]))
     
 
