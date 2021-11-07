@@ -65,10 +65,10 @@ if __name__ == '__main__':
     makeCopyOfFile('dummy-file.txt', encoded_atbash_data, 'Caesar')
 
     print()
-    print("encrypted file created")
+    print("encrypted / encoded file created")
     print()
 
-    print("reading encrypted File : ")
+    print("reading encrypted File / decoding file: ")
     print(readEncryptedFile('encrypted-dummy-file.txt', 'a1z26'))
     
 
