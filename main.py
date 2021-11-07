@@ -38,10 +38,7 @@ def readEncryptedFile(filename, key):
         elif key.capitalize() == "Atbash":
             return Atbash.decode(content)
         else:
-            return "invalid key"
-    
-
-        
+            return "invalid key" 
 
 
 key = {
@@ -62,18 +59,18 @@ if __name__ == '__main__':
     data = readFileContent('dummy-file.txt')
 
     print("file : dummy-file.txt")
-    print("algorithm : ", key)
+    print("Available algorithm : ", key)
     _key = input("Enter key / Algorithm: ")
-    print("algorithm : ", key[_key])
+    print("using", key[_key] , "algorithm")
     
     print()
 
-    print("data : ")
+    print("########## data ########## \n")
     print(data)
     
     print()
     
-    print("encoded data : ")
+    print("########## encoded data ########## \n")
     encoder = encoder_class_key[_key]
     encoded_data = encoder.encode(readFileContent('dummy-file.txt'))
 
@@ -81,10 +78,10 @@ if __name__ == '__main__':
     makeCopyOfFile('dummy-file.txt', encoded_data, _key)
 
     print()
-    print("encrypted / encoded file created")
+    print("########## encrypted / encoded file created ##########")
     print()
 
-    print("reading encrypted File / decoding file: ")
+    print("########## reading encrypted File / decoding file ########## \n")
     print(readEncryptedFile('encrypted-dummy-file.txt', key[_key]))
     
 
