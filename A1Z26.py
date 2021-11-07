@@ -33,7 +33,7 @@ class A1Z26(ciphers):
             else:
                 result += num
 
-        return result.capitalize()
+        return result
      
 if __name__ == "__main__":
     a = A1Z26()
