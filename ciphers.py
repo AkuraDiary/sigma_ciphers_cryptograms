@@ -5,7 +5,7 @@ import alphabet
 
 class ciphers():
     def __init__(self):
-        self.alphabet = alphabet()
+        self._alphabet = alphabet()
     
     def decode(data):
         return data

@@ -17,5 +17,8 @@ class alphabet():
 
 if __name__ == '__main__':
     a = alphabet()
-    print(a.getIndexOfLowercase('x'))
+
+    #trying out caesar algorithm
+    
+    
     
