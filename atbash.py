@@ -1,4 +1,3 @@
-from typing import NamedTuple
 from ciphers import ciphers
 class atbash(ciphers):
     def __init__(self):
