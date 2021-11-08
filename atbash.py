@@ -41,3 +41,4 @@ if __name__ == "__main__":
     atbash_cipher = atbash()
     print(atbash_cipher.encode("The quick brown fox jumps over the lazy dog"))
     print(atbash_cipher.encode("abc"))
+    print(atbash_cipher.decode("zyx"))

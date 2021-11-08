@@ -56,10 +56,11 @@ encoder_class_key = {
 }
 
 if __name__ == '__main__':
-    data = readFileContent('dummy-file.txt')
+    data = readFileContent('dummy-file.py')
+    filename = 'dummy-file.py'
     encoder = ""
 
-    print("file : dummy-file.txt")
+    print("file : ", filename)
     print("Available algorithm : ", key)
     _key = input("Enter key / Algorithm: ")
 
@@ -79,16 +80,16 @@ if __name__ == '__main__':
     
     print("########## encoded data ########## \n")
     
-    encoded_data = encoder.encode(readFileContent('dummy-file.txt'))
+    encoded_data = encoder.encode(readFileContent(filename))
 
     print(encoded_data)
-    makeCopyOfFile('dummy-file.txt', encoded_data, _key)
+    makeCopyOfFile(filename, encoded_data, _key)
 
     print()
     print("########## encrypted / encoded file created ##########")
     print()
 
     print("########## reading encrypted File / decoding file ########## \n")
-    print(readEncryptedFile('encrypted-dummy-file.txt', key[_key]))
+    print(readEncryptedFile('encrypted-dummy-file.py', key[_key]))
     
 
