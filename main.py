@@ -131,17 +131,4 @@ if __name__ == '__main__':
             exit()
         else:
             print("invalid choice")
-    """
-    filename = str(input("Enter the filename: "))
-    data = readFileContent(filename)
-    
-    print()
-    print("+++Status+++")
-    print("file : ", filename)
-    print("Available algorithm : ", key)
-    _key = input("Enter key / Algorithm: ")
-    encoder = encoder_class_key[_key] #set the encoder from input
-
-    encode()
-    """
     
