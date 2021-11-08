@@ -11,6 +11,32 @@ Atbash = atbash()
 Abza = ABZA()
 A1Z26 = A1Z26()
 
+key = {
+    "C" : "Caesar",
+    "A" : "Atbash",
+    "AB" : "ABZA",
+    "A1" : "A1Z26"    
+}
+
+encoder_class_key = {
+    "C" : Caesar,
+    "A" : Atbash,
+    "AB" : Abza,
+    "A1" : A1Z26
+}
+
+#var
+_key = ""
+filename =""
+encoder = ""
+data =""
+global newFileName
+
+def getKeyOfFile(filename):
+    with open(filename, 'r') as f:
+        _key = f.readline().strip()
+        Encoderkey = key[_key]
+        return Encoderkey
 
 def fileIsExist(filename):
     return os.path.exists(filename)
@@ -20,6 +46,7 @@ def readFileContent(filename):
         return f.read()
 
 def makeCopyOfFile(oldFileName, newContent, key, status = "encrypted"):
+    global newFileName
     newFileName = status + "-"+ oldFileName
     with open(newFileName, 'w') as f:
         f.write(key + '\n')
@@ -38,58 +65,83 @@ def readEncryptedFile(filename, key):
         elif key.capitalize() == "Atbash":
             return Atbash.decode(content)
         else:
-            return "invalid key" 
+            return "invalid key"
 
-
-key = {
-    "C" : "Caesar",
-    "A" : "Atbash",
-    "AB" : "ABZA",
-    "A1" : "A1Z26"    
-}
-
-encoder_class_key = {
-    "C" : Caesar,
-    "A" : Atbash,
-    "AB" : Abza,
-    "A1" : A1Z26
-}
-
-if __name__ == '__main__':
-    data = readFileContent('dummy-file.py')
-    filename = 'dummy-file.py'
-    encoder = ""
-
-    print("file : ", filename)
-    print("Available algorithm : ", key)
-    _key = input("Enter key / Algorithm: ")
-
+def encode():
     try:
         print("using", key[_key] , "algorithm")    
     except KeyError:
         print("key doesn\'t exist")    
         exit()
+
+    #print("########## data ########## \n")
+    #print(data)
     
-    print()
-    encoder = encoder_class_key[_key]
+    #print()
     
-    print("########## data ########## \n")
-    print(data)
-    
-    print()
-    
-    print("########## encoded data ########## \n")
+    #print("########## encoded data ########## \n")
     
     encoded_data = encoder.encode(readFileContent(filename))
 
-    print(encoded_data)
+    #print(encoded_data)
     makeCopyOfFile(filename, encoded_data, _key)
 
     print()
     print("########## encrypted / encoded file created ##########")
+    print("new filename : ", newFileName)
     print()
 
-    print("########## reading encrypted File / decoding file ########## \n")
-    print(readEncryptedFile('encrypted-dummy-file.py', key[_key]))
-    
+def decode():
+    filename = input("Enter the filename : ")
+    if fileIsExist(filename):
+        print("########## decoded data ########## \n")
+        try:
+            print(readEncryptedFile(filename, getKeyOfFile(newFileName)))
+        except:
+            print("Cannot decode this file")
+    else:
+        print("file doesn\'t exist")
+        
 
+if __name__ == '__main__':
+    while True:
+        print("########## Encoder-Decoder ##########")
+        print("1. Encode")
+        print("2. Decode")
+        print("3. Exit")
+        print("#############################")
+        print()
+        choice = input("Enter your choice : ")
+        if choice == "1":
+            filename = input("Enter the filename : ")
+            if fileIsExist(filename):
+                data = readFileContent(filename)
+                print()
+                print("+++Status+++")
+                print("file : ", filename)
+                print("Available algorithm : ", key)
+                _key = input("Enter key / Algorithm: ")
+                encoder = encoder_class_key[_key] #set the encoder from input
+                encode()
+            else:
+                print("file doesn\'t exist")
+        elif choice == "2":
+            decode()
+        elif choice == "3":
+            exit()
+        else:
+            print("invalid choice")
+    """
+    filename = str(input("Enter the filename: "))
+    data = readFileContent(filename)
+    
+    print()
+    print("+++Status+++")
+    print("file : ", filename)
+    print("Available algorithm : ", key)
+    _key = input("Enter key / Algorithm: ")
+    encoder = encoder_class_key[_key] #set the encoder from input
+
+    encode()
+    """
+    
