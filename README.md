@@ -17,4 +17,5 @@ then read the content, and insert it into choosen algorithm
 after that it create new "encrypted" file with the key, you can also decrypted that file, using this code too
 
 
- 
+here's my refference
+### [reference](https://gravityfalls.fandom.com/wiki/List_of_cryptograms/Episodes)
