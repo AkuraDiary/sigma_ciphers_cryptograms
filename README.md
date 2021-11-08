@@ -16,6 +16,9 @@ first, it take the file (currently supported file is .txt) in the same directory
 then read the content, and insert it into choosen algorithm
 after that it create new "encrypted" file with the key, you can also decrypted that file, using this code too
 
+<br>
 
 here's my refference
 ### [reference](https://gravityfalls.fandom.com/wiki/List_of_cryptograms/Episodes)
+
+and also, this is my first project with github copilot 😸
