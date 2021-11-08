@@ -4,18 +4,16 @@ class A1Z26(ciphers):
         super().__init__()
     
     def encode(self, data):
-        #A1Z26 algorithm
+        #A1Z26 encoding algorithm
         result = ""
         for word in data:
             if word.isalpha():
                 if word.isupper():
                     index = self._alphabet.getIndexOfUppercase(word)
-                    #reversed = self._alphabet.Reverse(self._alphabet.uppercase)
-                    result += str(index) + "`"#reversed[index]
+                    result += str(index) + "`"
                 elif word.islower():
                     index = self._alphabet.getIndexOfLowercase(word)
-                    #reversed = self._alphabet.Reverse(self._alphabet.lowercase)
-                    result += str(index) + "`"#reversed[index]
+                    result += str(index) + "`"
             else:
                 result += word
         return result
@@ -37,4 +35,4 @@ class A1Z26(ciphers):
      
 if __name__ == "__main__":
     a = A1Z26()
-    print(a.decode("012345"))
+    print(a.decode("0`1`2` 3`4`5`"))

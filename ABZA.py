@@ -4,7 +4,7 @@ class ABZA(ciphers):
         super().__init__()
     
     def encode(self, data):
-        #ABZA algorithm
+        #ABZA encoding algorithm
         result = ""
         for i in data:
             if i.isalpha():
@@ -17,7 +17,7 @@ class ABZA(ciphers):
         return result
     
     def decode(self, data):
-        #ABZA algorithm
+        #ABZA decoding algorithm
         result = ""
         for i in data:
             if i.isalpha():

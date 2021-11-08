@@ -6,6 +6,7 @@ class caesar(ciphers):
         super().__init__()
     
     def encode(self, text, shift = 3):
+        # implementing the caesar encoding algorithm
         result = ''
         for letter in text:
             if letter.isupper():
@@ -17,6 +18,7 @@ class caesar(ciphers):
         return result
     
     def decode(self, text, shift = 3):
+        #implementing the caesar decoding algorithm
         result = ''
         for letter in text:
             if letter.isupper():

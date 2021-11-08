@@ -4,7 +4,7 @@ class atbash(ciphers):
         super().__init__()
     
     def encode(self, text):
-        #implement the atbash algorithm
+        #implement the atbash encoding algorithm
         result = ""
         for char in text:
             if char.isalpha():
@@ -21,7 +21,7 @@ class atbash(ciphers):
         return result
     
     def decode(self, data):
-        #implement the atbash algorithm
+        #implement the atbash decoding algorithm
         result = ""
         for char in data:
             if char.isalpha():
