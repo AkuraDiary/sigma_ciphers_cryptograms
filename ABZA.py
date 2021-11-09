@@ -12,6 +12,9 @@ class ABZA(ciphers):
                     result += chr((ord(i) - 65 + 1) % 26 + 65)
                 else:
                     result += chr((ord(i) - 97 + 1) % 26 + 97)
+            elif i in self._alphabet.symbols:
+                index = self._alphabet.getIndexOfSymbol(i)
+                result += self._alphabet.getSymbolByIndex((index + 1) % len(self._alphabet.symbols))
             else:
                 result += i
         return result
@@ -25,6 +28,9 @@ class ABZA(ciphers):
                     result += chr((ord(i) - 65 - 1) % 26 + 65)
                 else:
                     result += chr((ord(i) - 97 - 1) % 26 + 97)
+            elif i in self._alphabet.symbols:
+                index = self._alphabet.getIndexOfSymbol(i)
+                result += self._alphabet.getSymbolByIndex((index - 1) % len(self._alphabet.symbols))
             else:
                 result += i
         return result
