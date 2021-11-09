@@ -21,7 +21,7 @@ class atbash(ciphers):
                     
             elif char in self._alphabet.symbols:
                 index = self._alphabet.getIndexOfSymbol(char)
-                result += self._alphabet.getSymbolByIndex(29 - index)
+                result += self._alphabet.getSymbolByIndex(len(self._alphabet.symbols) - index)
             else:
                 result += char
         return result
@@ -43,7 +43,7 @@ class atbash(ciphers):
                     result += char
             elif char in self._alphabet.symbols:
                 index = self._alphabet.getIndexOfSymbol(char)
-                result += self._alphabet.getSymbolByIndex(29 - index)
+                result += self._alphabet.getSymbolByIndex(len(self._alphabet.symbols) - index)
             else:
                 result += char
         return result
