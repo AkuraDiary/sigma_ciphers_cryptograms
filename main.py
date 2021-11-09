@@ -74,16 +74,8 @@ def encode():
         print("key doesn\'t exist")    
         exit()
 
-    #print("########## data ########## \n")
-    #print(data)
-    
-    #print()
-    
-    #print("########## encoded data ########## \n")
-    
     encoded_data = encoder.encode(readFileContent(filename))
 
-    #print(encoded_data)
     makeCopyOfFile(filename, encoded_data, _key)
 
     print()
