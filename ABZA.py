@@ -38,4 +38,4 @@ class ABZA(ciphers):
 if __name__ == "__main__":
     a = ABZA()
     print(a.encode("zabcd"))
-    print(a.decode("abcde"))
+    print(a.decode("abcde!"))
