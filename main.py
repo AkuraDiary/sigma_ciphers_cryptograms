@@ -73,17 +73,9 @@ def encode():
     except KeyError:
         print("key doesn\'t exist")    
         exit()
-
-    #print("########## data ########## \n")
-    #print(data)
-    
-    #print()
-    
-    #print("########## encoded data ########## \n")
     
     encoded_data = encoder.encode(readFileContent(filename))
 
-    #print(encoded_data)
     makeCopyOfFile(filename, encoded_data, _key)
 
     print()
@@ -98,7 +90,7 @@ def decode():
         try:
             print(readEncryptedFile(filename, getKeyOfFile(newFileName)))
         except:
-            print("Cannot decode this file")
+            print("An error occured, Cannot decode this file, please re-run the program or try another file")
     else:
         print("file doesn\'t exist")
         
