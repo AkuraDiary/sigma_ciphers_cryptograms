@@ -86,11 +86,13 @@ def encode():
 
 def decode():
     filename = input("Enter the filename : ")
+    print(getKeyOfFile(filename))
     if fileIsExist(filename):
         print("########## decoded data ########## \n")
         try:
-            print(readEncryptedFile(filename, getKeyOfFile(newFileName)))
-        except:
+            print(readEncryptedFile(filename, getKeyOfFile(filename)))
+        except Exception as e:
+            print(e)
             print("An error occured, Cannot decode this file, please re-run the program or try another file")
     else:
         print("file doesn\'t exist")

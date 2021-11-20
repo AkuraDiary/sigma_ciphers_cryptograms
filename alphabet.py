@@ -29,8 +29,5 @@ if __name__ == '__main__':
     a = alphabet()
     print(a.getSymbolByIndex(16))
     print(a.getIndexOfSymbol("}"))
-    print(len(a.symbols))
-
-    
-    
+    print(len(a.symbols))   
     
