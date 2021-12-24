@@ -35,3 +35,8 @@ class caesar(ciphers):
             else:
                 result += letter
         return result
+    
+
+if __name__ == "__main__":
+    caesar_cipher = caesar()
+    print( caesar_cipher.decode("Hypyl Aihhu Acpy Sio Oj") )
