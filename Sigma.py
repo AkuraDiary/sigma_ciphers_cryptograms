@@ -109,9 +109,11 @@ class Sigma(ciphers):
             
 
 if __name__ == "__main__":
+
+    print("\nTESTING SIGMA ALGORITHM \n")
     #playground testing
     sigma = Sigma()
-    dummy_token = sigma.generate_token(_token_length=4)
+    dummy_token = sigma.generate_token(_token_length=9)
     #algo = sigma.get_algo_type_from_token(dummy_token, 0)
     print("Token:", dummy_token)
     #print("Algo from Token index 0: ", algo)
@@ -122,4 +124,6 @@ if __name__ == "__main__":
     print("Encoded Text:", encoded_text , "\n")
     decoded_text = sigma.start_decode(encoded_text, dummy_token)
     print("Decoded Text:", decoded_text)
+
+    print("\nTESTING SIGMA ALGORITHM \n")
     
