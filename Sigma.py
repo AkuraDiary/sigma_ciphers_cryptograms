@@ -26,16 +26,16 @@ class Sigma(ciphers):
     keys = "ABCD"
        
     def start_encode(self, text, _token):
-        print("ENCODING")
+        #print("ENCODING")
         token = _token
-        print("Token : ",token)
+        #print("Token : ",token)
         # encode the text with each char of token
         #temp_result = ""
         result = text
-        print("starting loop \n")
+        #print("starting loop \n")
         for i in range(len(token)):
-            print(i , "loop")
-            print("text to encode : " , result)
+            #print(i , "loop")
+            #print("text to encode : " , result)
 
             # get the encoder class key by token
             algo = self.get_algo_type_from_token(token, i)
@@ -43,24 +43,24 @@ class Sigma(ciphers):
             result = algo.encode(result)
             
             #LOGS
-            print("algo : " , algo)
-            print("result : " , result , "\n")
-        print("ending loop")
-        print("ENCODING \n")
+            #print("algo : " , algo)
+            #print("result : " , result , "\n")
+        #print("ending loop")
+        #print("ENCODING \n")
         return result
     
     def start_decode(self, text, _token):
-        print("DECODING")
-        print("Token : ", _token)
+        #print("DECODING")
+        #print("Token : ", _token)
         reversed_token = self.walik(_token)
-        print("Reversed Token : ", reversed_token)
+        #print("Reversed Token : ", reversed_token)
         # decode the text with each part of token
         #temp_result = ""
         result = text
-        print("starting loop \n")
+        #print("starting loop \n")
         for i in range(len(reversed_token)):
-            print(i , "loop")
-            print("text to decode : " , result)
+            #print(i , "loop")
+            #print("text to decode : " , result)
 
             # get the encoder class key by token
             algo = self.get_algo_type_from_token(reversed_token, i)
@@ -68,10 +68,10 @@ class Sigma(ciphers):
             result = algo.decode(result)
             
             #LOGS
-            print("algo : " , algo)
-            print("result : " , result , "\n")
-        print("ending loop")
-        print("DECODING \n")
+            #print("algo : " , algo)
+            #print("result : " , result , "\n")
+        #print("ending loop")
+        #print("DECODING \n")
         return result
 
     def generate_token(self, _token_length=8):
@@ -104,26 +104,43 @@ class Sigma(ciphers):
             reversed_token += i
         return reversed_token
         
-            
-            
-            
+def test(text, constraint = 256):
+    algo = Sigma()
+    success_counter = 0
+    fail_counter = 0
+    for i in range(1, constraint):
+        token = algo.generate_token(_token_length=i)
+        encoded = algo.start_encode(text, token)
+        decoded = algo.start_decode(encoded, token)
+        if decoded.lower() == text.lower():
+            print("Test with token length {} : OK".format(i))
+            success_counter += 1
+        else:
+            print("Test with token length {} : FAIL".format(i))
+            fail_counter += 1
+    print("Success : {}".format(success_counter))
+    print("Fail : {}".format(fail_counter))
+    print("Total : {}".format(success_counter+fail_counter))
 
 if __name__ == "__main__":
 
     print("\nTESTING SIGMA ALGORITHM \n")
+    text = "Never Gonna Give You Up"
+    test(text)
+    '''
     #playground testing
     sigma = Sigma()
-    dummy_token = sigma.generate_token(_token_length=9)
+    dummy_token = sigma.generate_token(_token_length=2)
     #algo = sigma.get_algo_type_from_token(dummy_token, 0)
     print("Token:", dummy_token)
     #print("Algo from Token index 0: ", algo)
-    text = "Never Gonna Give You Up"
     print("Text:", text)
     print()
     encoded_text = sigma.start_encode(text, dummy_token)
     print("Encoded Text:", encoded_text , "\n")
     decoded_text = sigma.start_decode(encoded_text, dummy_token)
     print("Decoded Text:", decoded_text)
+    '''
 
     print("\nTESTING SIGMA ALGORITHM \n")
     
