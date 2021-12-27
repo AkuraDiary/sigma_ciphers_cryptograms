@@ -28,6 +28,7 @@ class Sigma(ciphers):
     uppercase_keys = "ABCD"#D"
     lowercase_keys = "abcd"
     symbol_keys = "!#$%"
+    space_keys = "`_-+"
 
     
     ##CRUCIAL FUNCTION##
@@ -53,6 +54,7 @@ class Sigma(ciphers):
             #print("result : " , result , "\n")
         #print("ending loop")
         #print("ENCODING \n")
+        result = result.replace(" ", random.choice(self.space_keys))
         return result
     
     def start_decode(self, text, _token):
@@ -64,6 +66,12 @@ class Sigma(ciphers):
         #temp_result = ""
         result = text
         #print("starting loop \n")
+
+        #checking for spaces symbols first
+        for i in range(len(text)):
+            if text[i] in self.space_keys:
+                result = result.replace(text[i], " ")        
+
         for i in range(len(reversed_token)):
             #print(i , "loop")
             #print("text to decode : " , result)
@@ -171,11 +179,11 @@ if __name__ == "__main__":
 
     print("\nTESTING SIGMA ALGORITHM \n")
     text = "Never Gonna Give You Up"
-    #test(text)
-    #'''
+    test(text, 1001)
+    '''
     #playground testing
     sigma = Sigma()
-    dummy_token = sigma.generate_token(_token_length=4)
+    dummy_token = sigma.generate_token(_token_length=8)
     encoded_text = sigma.start_encode(text, dummy_token)
     decoded_text = sigma.start_decode(encoded_text, dummy_token)
     #algo = sigma.get_algo_type_from_token(dummy_token, 0)
@@ -185,7 +193,7 @@ if __name__ == "__main__":
     print()
     print("Encoded Text:", encoded_text , "\n")
     print("Decoded Text:", decoded_text)
-    #'''
+    '''
 
     print("\nTESTING SIGMA ALGORITHM \n")
     
