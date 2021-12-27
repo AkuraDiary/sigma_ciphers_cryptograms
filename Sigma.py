@@ -1,6 +1,5 @@
 
 import random
-#from A1Z26 import A1Z26
 from AN import AN
 from caesar import caesar
 from ABZA import ABZA
@@ -27,7 +26,8 @@ class Sigma(ciphers):
     ]
 
     keys = "ABCD"#D"
-       
+    
+    ##CRUCIAL FUNCTION##
     def start_encode(self, text, _token):
         #print("ENCODING")
         token = _token
@@ -83,15 +83,27 @@ class Sigma(ciphers):
         _keys = self.keys
         for i in range(_token_length):
             token += random.choice(self.keys)
+            
             # make sure no direct duplicate in token
-            if i>0 and token[i] == token[i-1]:
-                temp_keys = _keys.replace(token[i], "")#removinng duplicated char from keys
-                new_char = random.choice(temp_keys) #choosing a new char from the temp_keys
-                t = list(token)
-                t[i] = new_char #change the char in token
-                token = "".join(t)
-                
+            if i>0:
+                if self.should_i_remove_duplicate(): 
+                    #yes i should remove duplicate
+                    if token[i] == token[i-1]:
+                        temp_keys = _keys.replace(token[i], "")#removinng duplicated char from keys
+                        new_char = random.choice(temp_keys) #choosing a new char from the temp_keys
+                        t = list(token)
+                        t[i] = new_char #change the char in token
+                        token = "".join(t)
+                else:
+                    #no i should not
+                    pass
         return token
+
+    ##CRUCIAL FUNCTION##
+
+    ##UTIL FUNCTION##
+    def should_i_remove_duplicate(self):
+        return (random.randint(1, 100))%2 == 0 # jika nilai genap return true
 
     def get_algo_type_from_token(self, _token, _index):
         # read the char in token and return the encoder class key by index of char index in keys
@@ -110,6 +122,10 @@ class Sigma(ciphers):
         for i in reversed(unreversed_token):
             reversed_token += i
         return reversed_token
+    
+    ##UTIL FUNCTION##
+
+
         
 def test(text, constraint = 257):
     algo = Sigma()
@@ -136,21 +152,21 @@ if __name__ == "__main__":
 
     print("\nTESTING SIGMA ALGORITHM \n")
     text = "Never Gonna Give You Up"
-    test(text)
-    '''
+    #test(text)
+    #'''
     #playground testing
     sigma = Sigma()
-    dummy_token = sigma.generate_token(_token_length=8)
+    dummy_token = sigma.generate_token(_token_length=256)
+    encoded_text = sigma.start_encode(text, dummy_token)
+    decoded_text = sigma.start_decode(encoded_text, dummy_token)
     #algo = sigma.get_algo_type_from_token(dummy_token, 0)
     print("Token:", dummy_token)
     #print("Algo from Token index 0: ", algo)
     print("Text:", text)
     print()
-    encoded_text = sigma.start_encode(text, dummy_token)
     print("Encoded Text:", encoded_text , "\n")
-    decoded_text = sigma.start_decode(encoded_text, dummy_token)
     print("Decoded Text:", decoded_text)
-    '''
+    #'''
 
     print("\nTESTING SIGMA ALGORITHM \n")
     
