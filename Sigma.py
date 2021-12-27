@@ -81,18 +81,12 @@ class Sigma(ciphers):
         for i in range(_token_length):
             token += random.choice(self.keys)
             # make sure no direct duplicate in token
-            print("token : ", token)
-            print(i)
             if i>0 and token[i] == token[i-1]:
-                print("duplicate found : ", token[i] , "and" , token[i-1])
-                temp_keys = _keys.replace(token[i], "")
-                print("before : ",temp_keys)
-                new_char = random.choice(temp_keys)
-                print("new char : ", new_char)
-                token.replace(token[i], new_char)
-                print("token : ",token)
-                temp_keys = self.keys
-                print("after : ",temp_keys, "\n")
+                temp_keys = _keys.replace(token[i], "")#removinng duplicated char from keys
+                new_char = random.choice(temp_keys) #choosing a new char from the temp_keys
+                t = list(token)
+                t[i] = new_char #change the char in token
+                token = "".join(t)
                 
         return token
 
@@ -143,7 +137,7 @@ if __name__ == "__main__":
     #'''
     #playground testing
     sigma = Sigma()
-    dummy_token = sigma.generate_token(_token_length=4)
+    dummy_token = sigma.generate_token(_token_length=8)
     #algo = sigma.get_algo_type_from_token(dummy_token, 0)
     print("Token:", dummy_token)
     #print("Algo from Token index 0: ", algo)
