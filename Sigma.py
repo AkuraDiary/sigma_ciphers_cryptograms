@@ -54,7 +54,11 @@ class Sigma(ciphers):
             #print("result : " , result , "\n")
         #print("ending loop")
         #print("ENCODING \n")
-        result = result.replace(" ", random.choice(self.space_keys))
+
+        #encoding the spaces
+        for i in range(len(result)):
+            if result[i] == " ":
+                result = result.replace(result[i], random.choice(self.space_keys), 1)
         return result
     
     def start_decode(self, text, _token):
@@ -114,13 +118,7 @@ class Sigma(ciphers):
                     #no i should not
                     pass
         return token
-
-    ##CRUCIAL FUNCTION##
-
-    ##UTIL FUNCTION##
-    def should_i_remove_duplicate(self):
-        return (random.randint(1, 100))%2 == 0 # jika nilai genap return true
-
+    
     def get_algo_type_from_token(self, _token, _index):
         # read the char in token and return the encoder class key by index of char index in keys
         the_char = _token[_index]
@@ -142,7 +140,13 @@ class Sigma(ciphers):
         except Exception as e:
             print("Error: {}".format(e))
             return None
-        
+    
+    ##CRUCIAL FUNCTION##
+
+    ##UTIL FUNCTION##
+    def should_i_remove_duplicate(self):
+        return (random.randint(1, 100))%2 == 0 # jika nilai genap return true
+    
     def walik(self, unreversed_token):
         # reverse the token
         reversed_token = ""
@@ -162,7 +166,7 @@ def test(text, constraint = 257):
         token = algo.generate_token(_token_length=i)
         encoded = algo.start_encode(text, token)
         decoded = algo.start_decode(encoded, token)
-        if decoded == text:
+        if decoded == text and encoded != text:
             print("Token : {}".format(token))
             print("Test with token length {} : OK \n".format(i))
             success_counter += 1
@@ -170,18 +174,22 @@ def test(text, constraint = 257):
             print("Token : {}".format(token))
             print("Test with token length {} : FAIL \n".format(i))
             fail_counter += 1
-            
+    
+    print("TEST RESULT : ")
     print("Success : {}".format(success_counter))
     print("Fail : {}".format(fail_counter))
     print("Total : {}".format(success_counter+fail_counter))
+    print("Success Rate (at least for now): {}".format(success_counter/(success_counter+fail_counter)))
+    print()#jarak
 
 if __name__ == "__main__":
 
     print("\nTESTING SIGMA ALGORITHM \n")
     text = "Never Gonna Give You Up"
-    test(text, 1001)
-    '''
+    test(text)
+    #'''
     #playground testing
+    print("1 more test :")
     sigma = Sigma()
     dummy_token = sigma.generate_token(_token_length=8)
     encoded_text = sigma.start_encode(text, dummy_token)
@@ -193,7 +201,7 @@ if __name__ == "__main__":
     print()
     print("Encoded Text:", encoded_text , "\n")
     print("Decoded Text:", decoded_text)
-    '''
+    #'''
 
     print("\nTESTING SIGMA ALGORITHM \n")
     
