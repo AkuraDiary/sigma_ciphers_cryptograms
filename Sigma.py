@@ -25,7 +25,10 @@ class Sigma(ciphers):
     #A1Z26
     ]
 
-    keys = "ABCD"#D"
+    uppercase_keys = "ABCD"#D"
+    lowercase_keys = "abcd"
+    symbol_keys = "!#$%"
+
     
     ##CRUCIAL FUNCTION##
     def start_encode(self, text, _token):
@@ -80,16 +83,21 @@ class Sigma(ciphers):
     def generate_token(self, _token_length=8):
         # generate a random token from keys with a customable length
         token = ""
-        _keys = self.keys
+        _keys = self.uppercase_keys
+        s_keyss = self.symbol_keys
+        l_keys = self.lowercase_keys
+
+        state = ""
         for i in range(_token_length):
-            token += random.choice(self.keys)
-            
+            the_keys = random.choice([_keys, s_keyss, l_keys])
+            token += random.choice(the_keys)
+            state = the_keys
             # make sure no direct duplicate in token
             if i>0:
                 if self.should_i_remove_duplicate(): 
                     #yes i should remove duplicate
                     if token[i] == token[i-1]:
-                        temp_keys = _keys.replace(token[i], "")#removinng duplicated char from keys
+                        temp_keys = state.replace(token[i], "")#removinng duplicated char from keys
                         new_char = random.choice(temp_keys) #choosing a new char from the temp_keys
                         t = list(token)
                         t[i] = new_char #change the char in token
@@ -107,11 +115,22 @@ class Sigma(ciphers):
 
     def get_algo_type_from_token(self, _token, _index):
         # read the char in token and return the encoder class key by index of char index in keys
+        the_char = _token[_index]
         try:
-            if _token[_index] not in _token:
+            if the_char not in _token:
                 raise Exception("The token is not valid")
             else:
-                return self.encoder_class_key[self.keys.index(_token[_index])]
+                if the_char in self.uppercase_keys:
+                    return self.encoder_class_key[self.uppercase_keys.index(the_char)]
+                elif the_char in self.lowercase_keys:
+                    return self.encoder_class_key[self.lowercase_keys.index(the_char)]
+                elif the_char in self.symbol_keys:
+                    return self.encoder_class_key[self.symbol_keys.index(the_char)]
+                else:
+                    raise Exception("Token keys not found")
+                    
+                    #return self.encoder_class_key[self.uppercase_keys.index(_token[_index])]
+                    
         except Exception as e:
             print("Error: {}".format(e))
             return None
@@ -135,7 +154,7 @@ def test(text, constraint = 257):
         token = algo.generate_token(_token_length=i)
         encoded = algo.start_encode(text, token)
         decoded = algo.start_decode(encoded, token)
-        if decoded.lower() == text.lower():
+        if decoded == text:
             print("Token : {}".format(token))
             print("Test with token length {} : OK \n".format(i))
             success_counter += 1
@@ -156,7 +175,7 @@ if __name__ == "__main__":
     #'''
     #playground testing
     sigma = Sigma()
-    dummy_token = sigma.generate_token(_token_length=256)
+    dummy_token = sigma.generate_token(_token_length=4)
     encoded_text = sigma.start_encode(text, dummy_token)
     decoded_text = sigma.start_decode(encoded_text, dummy_token)
     #algo = sigma.get_algo_type_from_token(dummy_token, 0)
