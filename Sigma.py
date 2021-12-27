@@ -1,6 +1,7 @@
 
 import random
-from A1Z26 import A1Z26
+#from A1Z26 import A1Z26
+from AN import AN
 from caesar import caesar
 from ABZA import ABZA
 from atbash import atbash
@@ -14,28 +15,30 @@ class Sigma(ciphers):
     Caesar = caesar()
     Atbash = atbash()
     Abza = ABZA()
+    AN = AN()
     #A1Z26 = A1Z26()
     
     encoder_class_key = [
     Caesar,
     Atbash,
     Abza,
+    AN
     #A1Z26
     ]
 
-    keys = "ABC"#D"
+    keys = "ABCD"#D"
        
     def start_encode(self, text, _token):
-        print("ENCODING")
+        #print("ENCODING")
         token = _token
-        print("Token : ",token)
+        #print("Token : ",token)
         # encode the text with each char of token
         #temp_result = ""
         result = text
-        print("starting loop \n")
+        #print("starting loop \n")
         for i in range(len(token)):
-            print(i , "loop")
-            print("text to encode : " , result)
+            #print(i , "loop")
+            #print("text to encode : " , result)
 
             # get the encoder class key by token
             algo = self.get_algo_type_from_token(token, i)
@@ -43,24 +46,24 @@ class Sigma(ciphers):
             result = algo.encode(result)
             
             #LOGS
-            print("algo : " , algo)
-            print("result : " , result , "\n")
-        print("ending loop")
-        print("ENCODING \n")
+            #print("algo : " , algo)
+            #print("result : " , result , "\n")
+        #print("ending loop")
+        #print("ENCODING \n")
         return result
     
     def start_decode(self, text, _token):
-        print("DECODING")
-        print("Token : ", _token)
+        #print("DECODING")
+        #print("Token : ", _token)
         reversed_token = self.walik(_token)
-        print("Reversed Token : ", reversed_token)
+        #print("Reversed Token : ", reversed_token)
         # decode the text with each part of token
         #temp_result = ""
         result = text
-        print("starting loop \n")
+        #print("starting loop \n")
         for i in range(len(reversed_token)):
-            print(i , "loop")
-            print("text to decode : " , result)
+            #print(i , "loop")
+            #print("text to decode : " , result)
 
             # get the encoder class key by token
             algo = self.get_algo_type_from_token(reversed_token, i)
@@ -68,10 +71,10 @@ class Sigma(ciphers):
             result = algo.decode(result)
             
             #LOGS
-            print("algo : " , algo)
-            print("result : " , result , "\n")
-        print("ending loop")
-        print("DECODING \n")
+            #print("algo : " , algo)
+            #print("result : " , result , "\n")
+        #print("ending loop")
+        #print("DECODING \n")
         return result
 
     def generate_token(self, _token_length=8):
@@ -133,8 +136,8 @@ if __name__ == "__main__":
 
     print("\nTESTING SIGMA ALGORITHM \n")
     text = "Never Gonna Give You Up"
-    #test(text)
-    #'''
+    test(text)
+    '''
     #playground testing
     sigma = Sigma()
     dummy_token = sigma.generate_token(_token_length=8)
@@ -147,7 +150,7 @@ if __name__ == "__main__":
     print("Encoded Text:", encoded_text , "\n")
     decoded_text = sigma.start_decode(encoded_text, dummy_token)
     print("Decoded Text:", decoded_text)
-    #'''
+    '''
 
     print("\nTESTING SIGMA ALGORITHM \n")
     
