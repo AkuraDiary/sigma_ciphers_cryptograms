@@ -14,16 +14,16 @@ class Sigma(ciphers):
     Caesar = caesar()
     Atbash = atbash()
     Abza = ABZA()
-    A1Z26 = A1Z26()
+    #A1Z26 = A1Z26()
     
     encoder_class_key = [
     Caesar,
     Atbash,
     Abza,
-    A1Z26
+    #A1Z26
     ]
 
-    keys = "ABCD"
+    keys = "ABC"#D"
        
     def start_encode(self, text, _token):
         print("ENCODING")

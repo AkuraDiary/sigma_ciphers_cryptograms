@@ -53,3 +53,4 @@ if __name__ == "__main__":
     print(atbash_cipher.encode("The quick brown fox jumps over the lazy dog"))
     print(atbash_cipher.encode("abc"))
     print(atbash_cipher.decode("zyx"))
+    print(atbash_cipher.encode("13`4`21`4`17` 6`14`13`13`0` 6`8`21`4` 24`14`20` 20`15`"))
