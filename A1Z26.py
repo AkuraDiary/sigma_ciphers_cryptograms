@@ -36,3 +36,4 @@ class A1Z26(ciphers):
 if __name__ == "__main__":
     a = A1Z26()
     print(a.decode("0`1`2` 3`4`5`"))
+    print(a.encode("Never Gonna Give You Up"))

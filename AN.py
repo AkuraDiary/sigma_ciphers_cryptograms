@@ -1,12 +1,11 @@
-
 from ciphers import ciphers
-class caesar(ciphers):
-
+class AN(ciphers):
+    # a classic scout cipher
     def __init__(self):
         super().__init__()
     
-    def encode(self, text, shift = 3):
-        # implementing the caesar encoding algorithm
+    def encode(self, text, shift = 13):
+        # implementing the AN encoding algorithm
         result = ''
         for letter in text:
             if letter.isupper():
@@ -20,8 +19,8 @@ class caesar(ciphers):
                 result += letter
         return result
     
-    def decode(self, text, shift = 3):
-        #implementing the caesar decoding algorithm
+    def decode(self, text, shift = 13):
+        #implementing the AN decoding algorithm
         result = ''
         for letter in text:
             if letter.isupper():
@@ -35,8 +34,8 @@ class caesar(ciphers):
             else:
                 result += letter
         return result
-    
 
 if __name__ == "__main__":
-    caesar_cipher = caesar()
-    print( caesar_cipher.decode("Hypyl Aihhu Acpy Sio Oj") )
+    a = AN()
+    print(a.encode("NA"))
+    print(a.decode("abcde!"))
