@@ -25,42 +25,19 @@ if you had another classic algorithm or custom algorithm that you want to add in
 Testing it :
 ![alt text](https://github.com/AkuraDiary/ciphers-cryptograms/blob/main/images/Screenshot%202021-12-28%20135514.png)
 if you want to test it yourself, you can clone this repo and run Sigma.py (you can adjust your token length)
-<!--```
- py Sigma.py
- 
- output : 
- TESTING SIGMA ALGORITHM
 
-testing with file
-Token: %#c%Ad$d
-File :  dummy-file.txt
-Content :
- Never gonna give you up
-Never gonna let you down
-Never gonna run around and desert you
-Never gonna make you cry
-Never gonna say goodbye
-Never gonna tell a lie and hurt you
+## To Do Next 🥛
+- ### 🧂 add salt mechanism
+- ### ⌨️ add command line mechanism
+- ### 🗃️ add more ciphers algorithm of course
 
-Encoded Text:
- LuduhɝskllyɟsqduɏakeɛejɿLuduhɚskllyɟnufɞakeɜvkclƍLuduhɞskllyɞhelɜyhkelvɚylvɏvuguhfɝakeƍLuduhɏskllyɛmyouɜakeɟwhaƍLuduhɚskllyɜgyaɛskkvxau~Luduhɟskllyɜfunnɛyɞnquɜylvɚrehfɛake
-
-Decoded Text:
- Never gonna give you up
-Never gonna let you down
-Never gonna run around and desert you
-Never gonna make you cry
-Never gonna say goodbye
-Never gonna tell a lie and hurt you
-
-TESTING SIGMA ALGORITHM
-``` -->
-
-## Contributing
+## Contributing 🍪
 ### if you want to contribute into this project, i would be so happy, check how to contribute [here](https://github.com/AkuraDiary/sigma-ciphers-cryptograms/blob/main/CONTRIBUTING.md)
+
 
 > It's so simple, until it's not and that's good, i guess
 
-## here's my [refference](https://gravityfalls.fandom.com/wiki/List_of_cryptograms/Episodes)
+
+## here's my gravity falls [refference](https://gravityfalls.fandom.com/wiki/List_of_cryptograms/Episodes)
 
 and also, this is my first project with github copilot 😸
