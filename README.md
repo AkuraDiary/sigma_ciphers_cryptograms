@@ -23,8 +23,8 @@ if you had another classic algorithm or custom algorithm that you want to add in
 > in a nutshell, it works by generating a token, and encrypt the text / data from that token char by char, and the length of the token is adjustable
 
 Testing it :
-
-```
+![alt text](https://github.com/AkuraDiary/ciphers-cryptograms/blob/main/images/Screenshot%202021-12-28%20135514.png)
+<!--```
  py Sigma.py
  
  output : 
@@ -53,7 +53,8 @@ Never gonna say goodbye
 Never gonna tell a lie and hurt you
 
 TESTING SIGMA ALGORITHM
-```
+``` -->
+
 
 <br>
 
