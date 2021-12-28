@@ -38,12 +38,10 @@ after spices mechanism
 - ### 🥜 add Nuke
 
 ## Contributing 🍪
-### if you want to contribute into this project, i would be so happy, check how to contribute [here](https://github.com/AkuraDiary/sigma-ciphers-cryptograms/blob/main/CONTRIBUTING.md)
-
-
-> It's so simple, until it's not and that's good, i guess
-
+### if you want to contribute into this project, i would be so happy, check how to contribute [here](https://github.com/AkuraDiary/sigma-ciphers-cryptograms/blob/main/CONTRIBUTING.md) 
+> especially if you could help to remove "spaghetti code" and boilerplate you are very welcomed to contribute
 
 ## here's my gravity falls [refference](https://gravityfalls.fandom.com/wiki/List_of_cryptograms/Episodes)
+`"It's so simple, until it's not and that's good, i guess"`
 
 and also, this is my first project with github copilot 😸
