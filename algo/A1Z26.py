@@ -1,4 +1,4 @@
-from ciphers import ciphers
+from base.ciphers import ciphers
 class A1Z26(ciphers):
     def __init__(self):
         super().__init__()

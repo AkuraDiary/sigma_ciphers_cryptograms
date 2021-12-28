@@ -1,9 +1,9 @@
 import os
 
-from A1Z26 import A1Z26
-from caesar import caesar
-from ABZA import ABZA
-from atbash import atbash
+from algo.A1Z26 import A1Z26
+from algo.caesar import caesar
+from algo.ABZA import ABZA
+from algo.atbash import atbash
 
 #algorithm
 Caesar = caesar()
