@@ -1,11 +1,10 @@
-
 import random
 from algo.AN import AN
 from algo.caesar import caesar
 from algo.ABZA import ABZA
 from algo.atbash import atbash
-from algo.base.ciphers import ciphers
-import old_main
+from algo.ciphers import ciphers
+import utils
 
 class Sigma(ciphers):
     def  __init__(self):
@@ -172,7 +171,7 @@ if __name__ == "__main__":
     #'''
     #playground testing
     #print("## File test ##")
-    content = old_main.readFileContent(file)
+    content = utils.readFileContent(file)
     sigma = Sigma()
     dummy_token = sigma.generate_token(_token_length=8)
     encoded_text = sigma.start_encode(content, dummy_token)

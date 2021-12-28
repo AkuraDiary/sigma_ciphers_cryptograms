@@ -13,7 +13,7 @@ create your file named with your custom algorithm
 create class in that file, and inherit it from ciphers class
 your class should at least containt this kind of structure
 ```
-from ciphers import ciphers
+from bsae.ciphers import ciphers
 class YOUR_CLASS_NAME(ciphers):
     def __init__(self):
         super().__init__()
@@ -30,6 +30,7 @@ if __name__ == "__main__":
     print(a.decode("your_test_text"))
 ```
 and it should compatible with uppercase, lowercase, and symbols
+and dont forget to put it on right directory
 
 - Step 5: Save your changes and commit your changes with proper message.
 

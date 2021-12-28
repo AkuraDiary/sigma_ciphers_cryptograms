@@ -1,4 +1,4 @@
-from base.ciphers import ciphers
+from algo.ciphers import ciphers
 class atbash(ciphers):
     def __init__(self):
         super().__init__()
