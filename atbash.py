@@ -21,7 +21,7 @@ class atbash(ciphers):
                     
             elif char in self._alphabet.symbols:
                 index = self._alphabet.getIndexOfSymbol(char)
-                result += self._alphabet.getSymbolByIndex(len(self._alphabet.symbols) - index)
+                result += self._alphabet.getSymbolByIndex((len(self._alphabet.symbols)-1) - index)
             else:
                 result += char
         return result
@@ -43,14 +43,14 @@ class atbash(ciphers):
                     result += char
             elif char in self._alphabet.symbols:
                 index = self._alphabet.getIndexOfSymbol(char)
-                result += self._alphabet.getSymbolByIndex(len(self._alphabet.symbols) - index)
+                result += self._alphabet.getSymbolByIndex((len(self._alphabet.symbols)-1) - index)
             else:
                 result += char
         return result
     
 if __name__ == "__main__":
     atbash_cipher = atbash()
-    print(atbash_cipher.encode("The quick brown fox jumps over the lazy dog"))
+    print(atbash_cipher.encode("The quick brown fox jumps over the lazy dog!"))
     print(atbash_cipher.encode("abc"))
-    print(atbash_cipher.decode("zyx"))
+    print(atbash_cipher.decode("zyx?"))
     print(atbash_cipher.encode("13`4`21`4`17` 6`14`13`13`0` 6`8`21`4` 24`14`20` 20`15`"))
