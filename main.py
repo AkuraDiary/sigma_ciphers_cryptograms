@@ -1,9 +1,8 @@
-import os
-
-from A1Z26 import A1Z26
-from caesar import caesar
-from ABZA import ABZA
-from atbash import atbash
+import utils
+from algo.A1Z26 import A1Z26
+from algo.caesar import caesar
+from algo.ABZA import ABZA
+from algo.atbash import atbash
 
 #algorithm
 Caesar = caesar()
@@ -37,20 +36,6 @@ def getKeyOfFile(filename):
         _key = f.readline().strip()
         Encoderkey = key[_key]
         return Encoderkey
-
-def fileIsExist(filename):
-    return os.path.exists(filename)
-
-def readFileContent(filename):
-    with open(filename, 'r') as f:
-        return f.read()
-
-def makeCopyOfFile(oldFileName, newContent, key, status = "encrypted"):
-    global newFileName
-    newFileName = status + "-"+ oldFileName
-    with open(newFileName, 'w') as f:
-        f.write(key + '\n')
-        f.write(newContent)
     
 def readEncryptedFile(filename, key):
     with open(filename, 'r') as f:
@@ -75,19 +60,19 @@ def encode():
         exit()
     
 
-    encoded_data = encoder.encode(readFileContent(filename))
+    encoded_data = encoder.encode(utils.readFileContent(filename))
 
-    makeCopyOfFile(filename, encoded_data, _key)
+    utils.makeCopyOfFile(filename, encoded_data, _key)
 
     print()
     print("########## encrypted / encoded file created ##########")
-    print("new filename : ", newFileName)
+    print("new filename : ", utils.newFileName)
     print()
 
 def decode():
     filename = input("Enter the filename : ")
     print(getKeyOfFile(filename))
-    if fileIsExist(filename):
+    if utils.fileIsExist(filename):
         print("########## decoded data ########## \n")
         try:
             print(readEncryptedFile(filename, getKeyOfFile(filename)))
@@ -97,7 +82,6 @@ def decode():
     else:
         print("file doesn\'t exist")
         
-
 if __name__ == '__main__':
     while True:
         print("########## Encoder-Decoder ##########")
@@ -109,8 +93,8 @@ if __name__ == '__main__':
         choice = input("Enter your choice : ")
         if choice == "1":
             filename = input("Enter the filename : ")
-            if fileIsExist(filename):
-                data = readFileContent(filename)
+            if utils.fileIsExist(filename):
+                data = utils.readFileContent(filename)
                 print()
                 print("+++Status+++")
                 print("file : ", filename)

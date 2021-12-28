@@ -1,4 +1,4 @@
-from ciphers import ciphers
+from algo.ciphers import ciphers
 class AN(ciphers):
     # a classic scout cipher
     def __init__(self):

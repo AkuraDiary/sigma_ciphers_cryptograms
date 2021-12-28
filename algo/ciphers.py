@@ -1,4 +1,4 @@
-from alphabet import alphabet
+from algo.alphabet import alphabet
 
 class ciphers():
     def __init__(self):

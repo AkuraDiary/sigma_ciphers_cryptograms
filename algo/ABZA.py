@@ -1,4 +1,4 @@
-from ciphers import ciphers
+from algo.ciphers import ciphers
 class ABZA(ciphers):
     def __init__(self):
         super().__init__()
