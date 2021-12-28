@@ -19,7 +19,7 @@ if you had another classic algorithm or custom algorithm that you want to add in
 ### - encrypting another people file (wait, that's illegal, or is it 🤨)
 ### - doing some encrypted message with your friend, or on exams 🤨
 
-## How it works (Sigma in Action)
+## How it works (Sigma in Action) 🧀
 > in a nutshell, it works by generating a token, and encrypt or decrypt the text / data into some kinda human-unreadable text from that token char by char, and the length of the token is adjustable
 
 Testing it :
