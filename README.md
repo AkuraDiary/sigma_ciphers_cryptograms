@@ -1,20 +1,27 @@
 # ciphers-cryptograms
 
-### some diy code to implementing ciphers-cryptograms from gravity falls with python, it's fun tho
+Yes, this was a DIY cipher inplementation inspired from gravity falls with python, but now, i've added my custom algorithm called Sigma (if you had a name suggestion, contact me please) so, what is Sigma ? simply it's the algorithm that stacked data from another simple ciphers algorithm
 
 ## Algorithm or ciphers list
 
-### Caesar
-### Atbash
-### A1Z26
-### ABZA (this is my custom algorithm)
-### Combination (coming soon i guess)
+> - Caesar -> good old Caesar ciphers, with 3 shift parameter
+> - Atbash -> Reversing the letter
+> - ABZA -> A into B Z into A
+> - AN -> classic scout cipher, A into N and N into A (turns out, this is a Caesar ciphers with 13 shift parameter)
+> - A1Z26 -> A into 1 Z into 26 (this algorithm still need some adjustment to implement into Sigma)
+> 
+> // if you had another classic algorithm or custom algorithm that you want to add into this project, you can contribute [here]() or contact me
+> 
+> - Sigma -> Wrapper algorithm / my custom algorithm
 
-## How it works
+## Use Case ?
+### - encrypting your private file
+### - encrypting another people file (wait, that's illegal, or is it 🤨)
+### - doing some encrypted message with your friend, or on exams 🤨
 
-first, it take the file (currently supported file is .txt) in the same directory as main.py
-then read the content, and insert it into choosen algorithm
-after that it create new "encrypted" file with the key, you can also decrypted that file, using this code too
+## How it works (Sigma in Action)
+> in a nutshell, it works by generating a token, and encrypt the text / data from that token char by char, and the length of the token is adjustable
+
 
 <br>
 
