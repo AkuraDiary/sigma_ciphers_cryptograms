@@ -20,7 +20,7 @@ if you had another classic algorithm or custom algorithm that you want to add in
 ### - doing some encrypted message with your friend, or on exams 🤨
 
 ## How it works (Sigma in Action)
-> in a nutshell, it works by generating a token, and encrypt or decrypt the text / data from that token char by char, and the length of the token is adjustable
+> in a nutshell, it works by generating a token, and encrypt or decrypt the text / data into some kinda human-unreadable text from that token char by char, and the length of the token is adjustable
 
 Testing it :
 ![alt text](https://github.com/AkuraDiary/ciphers-cryptograms/blob/main/images/Screenshot%202021-12-28%20135514.png)
