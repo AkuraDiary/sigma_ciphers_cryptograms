@@ -29,7 +29,8 @@ class Sigma(ciphers):
     uppercase_keys = "ABCD"#D"
     lowercase_keys = "abcd"
     symbol_keys = "!#$%"
-    space_keys = "~" + "\u025A" + "\u025B" + "\u025C" + "\u025D" + "\u025E" + "\u025F" #+chr("\u2200") +chr("\u2201") #"`_-+"
+    space_keys = "\u025A" + "\u025B" + "\u025C" + "\u025D" + "\u025E" + "\u025F" + "\u024F"
+    enter_keys = "~"+ "\u027F" + "\u028A"+ "\u018D"
 
     
     ##CRUCIAL FUNCTION##
@@ -56,10 +57,12 @@ class Sigma(ciphers):
         #print("ending loop")
         #print("ENCODING \n")
 
-        #encoding the spaces
+        #encoding the spaces and enter keys
         for i in range(len(result)):
             if result[i] == " ":
                 result = result.replace(result[i], random.choice(self.space_keys), 1)
+            elif text[i] == "\n":
+                result = result.replace(result[i], random.choice(self.enter_keys), 1)
         return result
     
     def start_decode(self, text, _token):
@@ -72,10 +75,12 @@ class Sigma(ciphers):
         result = text
         #print("starting loop \n")
 
-        #checking for spaces symbols first
+        #checking for spaces and enters (carriage return) symbols first
         for i in range(len(text)):
             if text[i] in self.space_keys:
-                result = result.replace(text[i], " ")        
+                result = result.replace(text[i], " ")
+            elif text[i] in self.enter_keys:
+                result = result.replace(text[i], "\n")
 
         for i in range(len(reversed_token)):
             #print(i , "loop")
@@ -96,13 +101,13 @@ class Sigma(ciphers):
     def generate_token(self, _token_length=8):
         # generate a random token from keys with a customable length
         token = ""
-        _keys = self.uppercase_keys
+        u_keys = self.uppercase_keys
         s_keyss = self.symbol_keys
         l_keys = self.lowercase_keys
 
         state = ""
         for i in range(_token_length):
-            the_keys = random.choice([_keys, s_keyss, l_keys])
+            the_keys = random.choice([u_keys, s_keyss, l_keys])
             token += random.choice(the_keys)
             state = the_keys
             # make sure no direct duplicate in token
@@ -191,8 +196,8 @@ if __name__ == "__main__":
     #print("testing with text / string")
     #test(text)
 
-    #print("testing with file")
-    file = "dummy-file.py"
+    print("testing with file")
+    file = "dummy-file.txt"
     #test(main.readFileContent(file))
     #'''
     #playground testing
@@ -213,7 +218,7 @@ if __name__ == "__main__":
     print(content == decoded_text) #bug = symbol
     #main.makeCopyOfFile(file, encoded_text,"")
     #'''
-    
-    #print("\u025A" + "\u025B" + "\u025C" + "\u025D" + "\u025E" + "\u025F")
+    #enter_keys = "~"+ "\u027F" + "\u028A"+ "\u018D"
+    #print(enter_keys)
     print("\nTESTING SIGMA ALGORITHM \n")
     
