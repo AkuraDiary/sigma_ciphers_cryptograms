@@ -199,7 +199,7 @@ if __name__ == "__main__":
     print("File more test :")
     content = main.readFileContent(file)
     sigma = Sigma()
-    dummy_token = "Ca!cb#cB!dc%$$ABd!Bdb!Cba!aA!C#a!!D$Baca!a#!dcD$a$cabB#cab#c#c!D#CADC$cCD%bDc#Db!cCABbD%Abd$D#BC%cabA$$c%!$%b%b%CAb!dbcB#DDCDAacaCdb%b!DcD%#CcaBdab$BacDc#bBbba!AcbB!bc%Bdccbc!cCA%#Cdb!DA$C%#$%DbdCBdB#dbbD#bBDcD!Bb$!$!aadCbB$%Cc#accB#ABdaBbCb$DBcDCDAD" #sigma.generate_token(_token_length=200)
+    dummy_token = sigma.generate_token(_token_length=8)
     encoded_text = sigma.start_encode(content, dummy_token)
     decoded_text = sigma.start_decode(encoded_text, dummy_token)
     #algo = sigma.get_algo_type_from_token(dummy_token, 0)
