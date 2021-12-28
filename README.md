@@ -4,15 +4,15 @@ Yes, this was a DIY cipher inplementation inspired from gravity falls with pytho
 
 ## Algorithm or ciphers list 🍞
 
-> - Caesar -> good old Caesar ciphers, with 3 shift parameter
-> - Atbash -> Reversing the letter
-> - ABZA -> A into B Z into A
-> - AN -> classic scout cipher, A into N and N into A (turns out, this is a Caesar ciphers with 13 shift parameter)
-> - A1Z26 -> A into 1 Z into 26 (this algorithm still need some adjustment to implement into Sigma)
-> 
-> // if you had another classic algorithm or custom algorithm that you want to add into this project, you can contribute [here]() or contact me
-> 
-> - Sigma -> Wrapper algorithm / my custom algorithm
+- Caesar -> good old Caesar ciphers, with 3 shift parameter
+- Atbash -> Reversing the letter
+- ABZA -> A into B Z into A
+- AN -> classic scout cipher, A into N and N into A (turns out, this is a Caesar ciphers with 13 shift parameter)
+- A1Z26 -> A into 1 Z into 26 (this algorithm still need some adjustment to implement into Sigma)
+ 
+if you had another classic algorithm or custom algorithm that you want to add into this project, you can contribute [here]() or contact me
+ 
+- Sigma -> Wrapper algorithm / my custom algorithm
 
 ## Use Case ? 🥪
 ### - encrypting your private file
