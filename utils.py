@@ -20,6 +20,11 @@ def makeCopyOfFile(oldFileName, newContent, key, status = "encrypted"):
     with open(newFileName, 'w') as f:
         f.write(key + '\n')
         f.write(newContent)
+
+def generateTokenFile(oldFileName, token):
+    newFilename = "token-" + oldFileName
+    with open(newFilename, 'w') as f:
+        f.write(token)
     
 
 if __name__ == '__main__':
