@@ -196,7 +196,7 @@ if __name__ == "__main__":
     #test(main.readFileContent(file))
     #'''
     #playground testing
-    print("File more test :")
+    print("File test :")
     content = main.readFileContent(file)
     sigma = Sigma()
     dummy_token = sigma.generate_token(_token_length=8)
