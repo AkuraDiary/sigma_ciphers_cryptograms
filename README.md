@@ -56,11 +56,9 @@ Never gonna tell a lie and hurt you
 TESTING SIGMA ALGORITHM
 ``` -->
 
-
-<br>
 ## Contributing
 ### if you want to contribute into this project, i would be so happy, check how to contribute [here]()
-
+<br>
 ## here's my refference
 ### [reference](https://gravityfalls.fandom.com/wiki/List_of_cryptograms/Episodes)
 
