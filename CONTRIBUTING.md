@@ -13,7 +13,7 @@ create your file named with your custom algorithm
 create class in that file, and inherit it from ciphers class
 your class should at least containt this kind of structure
 ```
-from bsae.ciphers import ciphers
+from algo.ciphers import ciphers
 class YOUR_CLASS_NAME(ciphers):
     def __init__(self):
         super().__init__()
