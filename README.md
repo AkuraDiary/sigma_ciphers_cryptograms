@@ -32,8 +32,10 @@ after spices mechanism
 > if you want to test it yourself, you can clone this repo and run Sigma.py (you can adjust your token length)
 
 ## To Do Next 🥛
+- ###  🌮 add file utilities
 - ### ⌨️ add command line mechanism
 - ### 🗃️ add more ciphers algorithm of course
+- ### 🥜 add Nuke
 
 ## Contributing 🍪
 ### if you want to contribute into this project, i would be so happy, check how to contribute [here](https://github.com/AkuraDiary/sigma-ciphers-cryptograms/blob/main/CONTRIBUTING.md)
