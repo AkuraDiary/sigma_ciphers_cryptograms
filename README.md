@@ -10,7 +10,7 @@ Yes, this was a DIY cipher inplementation inspired from gravity falls with pytho
 - AN -> classic scout cipher, A into N and N into A (turns out, this is a Caesar ciphers with 13 shift parameter)
 - A1Z26 -> A into 1 Z into 26 (this algorithm still need some adjustment to implement into Sigma)
  
-if you had another classic algorithm or custom algorithm that you want to add into this project, you can contribute [here]() or contact me
+if you had another classic algorithm or custom algorithm that you want to add into this project, you can contribute [here](https://github.com/AkuraDiary/sigma-ciphers-cryptograms/blob/main/CONTRIBUTING.md) or contact me
  
 - Sigma -> Wrapper algorithm / my custom algorithm
 
@@ -57,8 +57,10 @@ TESTING SIGMA ALGORITHM
 ``` -->
 
 ## Contributing
-### if you want to contribute into this project, i would be so happy, check how to contribute [here]()
+### if you want to contribute into this project, i would be so happy, check how to contribute [here](https://github.com/AkuraDiary/sigma-ciphers-cryptograms/blob/main/CONTRIBUTING.md)
+
 <br>
+
 ## here's my [refference](https://gravityfalls.fandom.com/wiki/List_of_cryptograms/Episodes)
 
 and also, this is my first project with github copilot 😸
