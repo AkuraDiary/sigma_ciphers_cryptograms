@@ -5,6 +5,7 @@ from caesar import caesar
 from ABZA import ABZA
 from atbash import atbash
 from ciphers import ciphers
+import main
 
 class Sigma(ciphers):
     def  __init__(self):
@@ -28,7 +29,7 @@ class Sigma(ciphers):
     uppercase_keys = "ABCD"#D"
     lowercase_keys = "abcd"
     symbol_keys = "!#$%"
-    space_keys = "`_-+"
+    space_keys = "~" + "\u025A" + "\u025B" + "\u025C" + "\u025D" + "\u025E" + "\u025F" #+chr("\u2200") +chr("\u2201") #"`_-+"
 
     
     ##CRUCIAL FUNCTION##
@@ -186,22 +187,33 @@ if __name__ == "__main__":
 
     print("\nTESTING SIGMA ALGORITHM \n")
     text = "Never Gonna Give You Up"
-    test(text)
+    
+    #print("testing with text / string")
+    #test(text)
+
+    #print("testing with file")
+    file = "dummy-file.py"
+    #test(main.readFileContent(file))
     #'''
     #playground testing
-    print("1 more test :")
+    print("File more test :")
+    content = main.readFileContent(file)
     sigma = Sigma()
-    dummy_token = sigma.generate_token(_token_length=8)
-    encoded_text = sigma.start_encode(text, dummy_token)
+    dummy_token = "Ca!cb#cB!dc%$$ABd!Bdb!Cba!aA!C#a!!D$Baca!a#!dcD$a$cabB#cab#c#c!D#CADC$cCD%bDc#Db!cCABbD%Abd$D#BC%cabA$$c%!$%b%b%CAb!dbcB#DDCDAacaCdb%b!DcD%#CcaBdab$BacDc#bBbba!AcbB!bc%Bdccbc!cCA%#Cdb!DA$C%#$%DbdCBdB#dbbD#bBDcD!Bb$!$!aadCbB$%Cc#accB#ABdaBbCb$DBcDCDAD" #sigma.generate_token(_token_length=200)
+    encoded_text = sigma.start_encode(content, dummy_token)
     decoded_text = sigma.start_decode(encoded_text, dummy_token)
     #algo = sigma.get_algo_type_from_token(dummy_token, 0)
     print("Token:", dummy_token)
     #print("Algo from Token index 0: ", algo)
-    print("Text:", text)
+    print("File : ", file)
+    print("Content : \n", str(content))
     print()
-    print("Encoded Text:", encoded_text , "\n")
-    print("Decoded Text:", decoded_text)
+    print("Encoded Text: \n", encoded_text , "\n")
+    print("Decoded Text: \n", decoded_text)
+    print(content == decoded_text) #bug = symbol
+    #main.makeCopyOfFile(file, encoded_text,"")
     #'''
-
+    
+    #print("\u025A" + "\u025B" + "\u025C" + "\u025D" + "\u025E" + "\u025F")
     print("\nTESTING SIGMA ALGORITHM \n")
     

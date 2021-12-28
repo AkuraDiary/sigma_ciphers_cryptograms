@@ -3,6 +3,7 @@ class alphabet():
     lowercase = "abcdefghijklmnopqrstuvwxyz"
     numbers = "0123456789"
     symbols = "!@#$%^&*()_+-=][}{|;':\",./<>?"
+    # space keys => "`_-+"
 
     def Reverse(self, string):
         return string[::-1]

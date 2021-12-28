@@ -13,7 +13,7 @@ class caesar(ciphers):
                 result += self._alphabet.getUppercaseByIndex((self._alphabet.getIndexOfUppercase(letter) - shift) % 26)
             elif letter.islower():
                 result += self._alphabet.getLowercaseByIndex((self._alphabet.getIndexOfLowercase(letter) - shift) % 26)
-            elif letter in self._alphabet.symbols:
+            elif letter in self._alphabet.symbols and letter != " ":
                 index = self._alphabet.getIndexOfSymbol(letter)
                 result += self._alphabet.getSymbolByIndex((index - shift) % len(self._alphabet.symbols))
             else:
@@ -28,7 +28,7 @@ class caesar(ciphers):
                 result += self._alphabet.getUppercaseByIndex((self._alphabet.getIndexOfUppercase(letter) + shift) % 26)
             elif letter.islower():
                 result += self._alphabet.getLowercaseByIndex((self._alphabet.getIndexOfLowercase(letter) + shift) % 26)
-            elif letter in self._alphabet.symbols:
+            elif letter in self._alphabet.symbols and letter != " ":
                 index = self._alphabet.getIndexOfSymbol(letter)
                 result += self._alphabet.getSymbolByIndex((index + shift) % len(self._alphabet.symbols))
 
