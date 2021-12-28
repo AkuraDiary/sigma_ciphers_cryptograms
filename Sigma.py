@@ -16,17 +16,15 @@ class Sigma(ciphers):
     Atbash = atbash()
     Abza = ABZA()
     AN = AN()
-    #A1Z26 = A1Z26()
     
     encoder_class_key = [
     Caesar,
     Atbash,
     Abza,
     AN
-    #A1Z26
     ]
 
-    uppercase_keys = "ABCD"#D"
+    uppercase_keys = "ABCD"
     lowercase_keys = "abcd"
     symbol_keys = "!#$%"
     space_keys = "\u025A" + "\u025B" + "\u025C" + "\u025D" + "\u025E" + "\u025F" + "\u024F"
@@ -35,27 +33,14 @@ class Sigma(ciphers):
     
     ##CRUCIAL FUNCTION##
     def start_encode(self, text, _token):
-        #print("ENCODING")
         token = _token
-        #print("Token : ",token)
         # encode the text with each char of token
-        #temp_result = ""
         result = text
-        #print("starting loop \n")
         for i in range(len(token)):
-            #print(i , "loop")
-            #print("text to encode : " , result)
-
             # get the encoder class key by token
             algo = self.get_algo_type_from_token(token, i)
             # encode the text with the encoder class key
             result = algo.encode(result)
-            
-            #LOGS
-            #print("algo : " , algo)
-            #print("result : " , result , "\n")
-        #print("ending loop")
-        #print("ENCODING \n")
 
         #encoding the spaces and enter keys
         for i in range(len(result)):
@@ -63,19 +48,14 @@ class Sigma(ciphers):
                 result = result.replace(result[i], random.choice(self.space_keys), 1)
             elif text[i] == "\n":
                 result = result.replace(result[i], random.choice(self.enter_keys), 1)
+
         return result
     
     def start_decode(self, text, _token):
-        #print("DECODING")
-        #print("Token : ", _token)
         reversed_token = self.walik(_token)
-        #print("Reversed Token : ", reversed_token)
-        # decode the text with each part of token
-        #temp_result = ""
         result = text
-        #print("starting loop \n")
 
-        #checking for spaces and enters (carriage return) symbols first
+        #checking for spaces and enters (carriage return) symbols first and encode it
         for i in range(len(text)):
             if text[i] in self.space_keys:
                 result = result.replace(text[i], " ")
@@ -83,19 +63,11 @@ class Sigma(ciphers):
                 result = result.replace(text[i], "\n")
 
         for i in range(len(reversed_token)):
-            #print(i , "loop")
-            #print("text to decode : " , result)
-
             # get the encoder class key by token
             algo = self.get_algo_type_from_token(reversed_token, i)
             # decode the text with the encoder class key
             result = algo.decode(result)
-            
-            #LOGS
-            #print("algo : " , algo)
-            #print("result : " , result , "\n")
-        #print("ending loop")
-        #print("DECODING \n")
+
         return result
 
     def generate_token(self, _token_length=8):
@@ -140,8 +112,6 @@ class Sigma(ciphers):
                     return self.encoder_class_key[self.symbol_keys.index(the_char)]
                 else:
                     raise Exception("Token keys not found")
-                    
-                    #return self.encoder_class_key[self.uppercase_keys.index(_token[_index])]
                     
         except Exception as e:
             print("Error: {}".format(e))
@@ -201,13 +171,12 @@ if __name__ == "__main__":
     #test(main.readFileContent(file))
     #'''
     #playground testing
-    print("File test :")
+    #print("## File test ##")
     content = main.readFileContent(file)
     sigma = Sigma()
     dummy_token = sigma.generate_token(_token_length=8)
     encoded_text = sigma.start_encode(content, dummy_token)
     decoded_text = sigma.start_decode(encoded_text, dummy_token)
-    #algo = sigma.get_algo_type_from_token(dummy_token, 0)
     print("Token:", dummy_token)
     #print("Algo from Token index 0: ", algo)
     print("File : ", file)
@@ -218,7 +187,5 @@ if __name__ == "__main__":
     print(content == decoded_text) #bug = symbol
     #main.makeCopyOfFile(file, encoded_text,"")
     #'''
-    #enter_keys = "~"+ "\u027F" + "\u028A"+ "\u018D"
-    #print(enter_keys)
     print("\nTESTING SIGMA ALGORITHM \n")
     
