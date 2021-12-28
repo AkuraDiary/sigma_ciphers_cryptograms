@@ -22,6 +22,39 @@ Yes, this was a DIY cipher inplementation inspired from gravity falls with pytho
 ## How it works (Sigma in Action)
 > in a nutshell, it works by generating a token, and encrypt the text / data from that token char by char, and the length of the token is adjustable
 
+Testing it :
+
+```
+ py Sigma.py
+ 
+ output : 
+ TESTING SIGMA ALGORITHM
+
+testing with file
+Token: %#c%Ad$d
+File :  dummy-file.txt
+Content :
+ Never gonna give you up
+Never gonna let you down
+Never gonna run around and desert you
+Never gonna make you cry
+Never gonna say goodbye
+Never gonna tell a lie and hurt you
+
+Encoded Text:
+ LuduhɝskllyɟsqduɏakeɛejɿLuduhɚskllyɟnufɞakeɜvkclƍLuduhɞskllyɞhelɜyhkelvɚylvɏvuguhfɝakeƍLuduhɏskllyɛmyouɜakeɟwhaƍLuduhɚskllyɜgyaɛskkvxau~Luduhɟskllyɜfunnɛyɞnquɜylvɚrehfɛake
+
+Decoded Text:
+ Never gonna give you up
+Never gonna let you down
+Never gonna run around and desert you
+Never gonna make you cry
+Never gonna say goodbye
+Never gonna tell a lie and hurt you
+
+TESTING SIGMA ALGORITHM
+```
+
 <br>
 
 ## here's my refference
