@@ -184,7 +184,6 @@ if __name__ == "__main__":
     print()
     print("Encoded Text: \n", encoded_text , "\n")
     print("Decoded Text: \n", decoded_text)
-    print(content == decoded_text) #bug = symbol
     #main.makeCopyOfFile(file, encoded_text,"")
     #'''
     print("\nTESTING SIGMA ALGORITHM \n")
