@@ -109,7 +109,7 @@ if __name__ == "__main__":
     print("testing with text : ")
     text = "Never Gonna Give You Up, Never Gonna Make You Cry, Never Gonna Run Around and Desert You"
     print("Text : ",text)
-    #threaded_test(text, 257)
+    threaded_test(text, 257)
     
     print()#jarak
 
@@ -117,13 +117,13 @@ if __name__ == "__main__":
     dummy_file = "dummy-file.txt"
     file_content = utils.readFileContent(dummy_file)
     print("File : ", dummy_file)
-    #threaded_test(file_content, 257)
-
-    file_path = "D:\\pokok wa\'ane seto\\Project\\Python\\absen-startup.json" #change it to your ouwn file or path
-    file_name = "absen-startup.json"
+    threaded_test(file_content, 257)
 
     print()#jarak
 
+    '''
+    file_path = "D:\\pokok wa\'ane seto\\Project\\Python\\absen-startup.json" #change it to your ouwn file or path
+    file_name = "absen-startup.json"
     print("testing to encrypt file and generate token file")
     print("File : ", file_path)
     token = algo.generate_token(257)
@@ -138,5 +138,6 @@ if __name__ == "__main__":
     decoded_text = algo.start_decode(utils.readFileContent(newFilename), utils.readFileContent(tokenFile))
     if decoded_text == content and encoded_text != content:
         print("Decrypting : OK")
+    #'''
 
     print("\nTESTING SIGMA ALGORITHM \n")
