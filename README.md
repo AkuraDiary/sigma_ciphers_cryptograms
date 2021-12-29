@@ -24,13 +24,10 @@ if you had another classic algorithm or custom algorithm that you want to add in
 > in a nutshell, it works by generating a token, and encrypt or decrypt the text / data into some kinda human-unreadable text from that token char by char, and the length of the token is adjustable
 
 Testing it :
-before spices mechanism
-![alt text](https://github.com/AkuraDiary/sigma-ciphers-cryptograms/blob/main/images/before%20spices.png)
+I use automated testing file (test_case.py) so, here's the summary
+![summary test](https://github.com/AkuraDiary/sigma-ciphers-cryptograms/blob/main/images/test_summarry.png)
 
-after spices mechanism
-![alt text](https://github.com/AkuraDiary/sigma-ciphers-cryptograms/blob/main/images/after%20spices.png)
-
-> if you want to test it yourself, you can clone this repo and run Sigma.py (you can adjust your token length)
+> if you want to test it yourself, you can run it on test_case.py (you can adjust the parameters by yourself)
 
 ## To Do Next 🥛
 - ###  🌮 add file utilities
