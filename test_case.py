@@ -38,7 +38,7 @@ def base_test(data, token_leng=8):
         decoded = algo.start_decode(encoded, token)
         #print()#jarak
         #print("BASE TEST RESULT : ")
-        if decoded == text and encoded != text:
+        if decoded == data and encoded != data:
             return True 
         else:
             return False 
@@ -109,14 +109,34 @@ if __name__ == "__main__":
     print("testing with text : ")
     text = "Never Gonna Give You Up, Never Gonna Make You Cry, Never Gonna Run Around and Desert You"
     print("Text : ",text)
-    threaded_test(text, 257)
+    #threaded_test(text, 257)
     
     print()#jarak
 
     print("testing with file : ")
-    file_path = "dummy-file.txt"
-    file_content = utils.readFileContent(file_path)
+    dummy_file = "dummy-file.txt"
+    file_content = utils.readFileContent(dummy_file)
+    print("File : ", dummy_file)
+    #threaded_test(file_content, 257)
+
+    file_path = "D:\\pokok wa\'ane seto\\Project\\Python\\absen-startup.json" #change it to your ouwn file or path
+    file_name = "absen-startup.json"
+
+    print()#jarak
+
+    print("testing to encrypt file and generate token file")
     print("File : ", file_path)
-    threaded_test(file_content, 257)
+    token = algo.generate_token(257)
+    content = utils.readFileContent(file_path)
+    encoded_text = algo.start_encode(content, token)
+    newFilename = utils.makeCopyOfFile(file_name, encoded_text, retrieve_fileName=True)
+    tokenFile = utils.storeTokenIntoFile(token, file_name, retrieve_fileName=True)
+    print("Succesfully encode {} and store token into {}".format(file_name, file_name))
+    print("now decrypt it")
+    print("File : ", newFilename)
+    print("Token File: ", tokenFile)
+    decoded_text = algo.start_decode(utils.readFileContent(newFilename), utils.readFileContent(tokenFile))
+    if decoded_text == content and encoded_text != content:
+        print("Decrypting : OK")
 
     print("\nTESTING SIGMA ALGORITHM \n")
