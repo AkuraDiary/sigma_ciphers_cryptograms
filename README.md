@@ -1,4 +1,4 @@
-# ciphers-cryptograms 🥖
+# sigma-ciphers-cryptograms 🥖
 
 Yes, this was a DIY cipher inplementation inspired from gravity falls with python, but now, i've added my custom algorithm called Sigma (if you had a name suggestion, contact me please) so, what is Sigma ? simply it's the algorithm that stacked data from another simple ciphers algorithm
 
@@ -41,5 +41,5 @@ I use automated testing file (test_case.py) so, here's the summary
 
 ## here's my gravity falls [refference](https://gravityfalls.fandom.com/wiki/List_of_cryptograms/Episodes)
 `"It's so simple, until it's not and that's good, i guess"`
-
+i'm trying to keep this simple, so i only using python built in library
 and also, this is my first project with github copilot 😸
