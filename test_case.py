@@ -10,11 +10,13 @@ def threaded_File_Test(file, constraint, print_result = False):
         threading.Thread(target=File_Test, args=(file, i, print_result)).start()
 
 def threaded_test(data, constraint):
+    d = "Testing...."
     succesCount = 0
     failCount = 0
     res = [False] * constraint
     # test encrypting and decrypting with threading works with file or text     
     for i in range(constraint):
+        
         res[i] = threading.Thread(target=base_test, args=(data, i))
 
         res[i].start()
@@ -24,6 +26,7 @@ def threaded_test(data, constraint):
             succesCount += 1
         else:
             failCount += 1
+        print (d,end="\r")
 
     succes_fail_summary("Threaded Test ", succesCount, failCount)
 
@@ -93,27 +96,27 @@ def File_Test(file_path = "dummy-file.txt", constraint = 8, print_result = False
 
 def succes_fail_summary(testName , success_counter, fail_counter):
     print("{} TEST RESULT : ".format(testName))
-    print("Success : {}".format(success_counter))
-    print("Fail : {}".format(fail_counter))
     print("Total : {}".format(success_counter+fail_counter))
+    print("Success : {}".format(success_counter))
+    print("Fail : {}".format(fail_counter))    
     print("Success Rate (at least for now): {}".format(success_counter/(success_counter+fail_counter)))
     print()#jarak
-
 
 if __name__ == "__main__":
 
     print("\nTESTING SIGMA ALGORITHM \n")
 
-    
+    print("testing with text : ")
     text = "Never Gonna Give You Up, Never Gonna Make You Cry, Never Gonna Run Around and Desert You"
-    print("Text : ",text, "\n")
+    print("Text : ",text)
     threaded_test(text, 257)
     
     print()#jarak
 
+    print("testing with file : ")
     file_path = "dummy-file.txt"
     file_content = utils.readFileContent(file_path)
-    print("File : ", file_path , "\n")
+    print("File : ", file_path)
     threaded_test(file_content, 257)
 
     print("\nTESTING SIGMA ALGORITHM \n")
