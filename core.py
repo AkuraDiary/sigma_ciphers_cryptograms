@@ -112,11 +112,11 @@ class Sigma(ciphers):
     
     def get_algo_type_from_token(self, _token, _index):
         # read the char in token and return the encoder class key by index of char index in keys
-        the_char = _token[_index]
         try:
-            if the_char not in _token:
+            if _token == "" or _index > len(_token) or _index < 0:
                 raise Exception("The token is not valid")
             else:
+                the_char = _token[_index]
                 if the_char in self.uppercase_keys:
                     return self.encoder_class_key[self.uppercase_keys.index(the_char)]
                 elif the_char in self.lowercase_keys:
@@ -147,4 +147,4 @@ class Sigma(ciphers):
 
 
 if __name__ == "__main__":
-    print("""INFO : this is Sigma core module you can use it as a library \nor as a complete program from sigma.py""")
+    print("""INFO : this is Sigma core module you can use it as a library \nor from interfaces in sigma.py""")
