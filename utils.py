@@ -30,8 +30,6 @@ def path_leaf(path):
 
 def readFileContent(filename):
     #read the file content, no matter it's from a path or dir / path
-    #if os.path.isdir(filename):
-        #filename = path_leaf(filename)
     if fileIsExist(filename):
         try:
             with open(filename, 'r') as f:
@@ -42,9 +40,7 @@ def readFileContent(filename):
         return None
 
 def fileSupported(filename):
-    #read the file content, no matter it's from a path or dir / path
-    #if os.path.isdir(filename):
-        #filename = path_leaf(filename)
+    # check if the file is supported or not
     if fileIsExist(filename):
         try:
             with open(filename, 'r') as f:
@@ -61,6 +57,10 @@ def makeCopyOfFile(oldFileName, newContent, status = "encrypted", retrieve_fileN
     if retrieve_fileName:
         return newFileName
 
+def overwrite_file(file, content):
+    with open(file, 'w', encoding="utf-8") as f:
+        f.write(content)
+
 def storeTokenIntoFile(token, filename, retrieve_fileName = False):
     filename = "token-for-" + filename
     with open(filename, 'w', encoding="utf=8") as f:
@@ -71,6 +71,7 @@ def storeTokenIntoFile(token, filename, retrieve_fileName = False):
 def list_files(dir_path):
     #list all "only" files in a directory
     _Lists = os.listdir(dir_path)
+    print("Scanning supported file in dir....", end="\r")
     for file in _Lists: #file recognition / testing the it's the file or not (anjay file recognition)
         try:
             if fileSupported(dir_path + file):
@@ -79,15 +80,15 @@ def list_files(dir_path):
             print("Warning: {} {}".format( file, e))
             _Lists.remove(file)
             print("Removed from list : " , file, "\n")
-    print("list of supported files : ", _Lists)
+    #print("list of supported files : ", _Lists)
     return _Lists
 
 if __name__ == '__main__':
     print("utils.py\n")
     file_path = "D:\\dummy_folder\\" #change it to your ouwn file or path
-    #print(readFileContent("dummy-file.txt"))
 
-    files = list_files(file_path)
+    #files = list_files(file_path)
     print()
-    
+    file_path += "siswa-Copy.txt"
+    #overwrite_file(file_path, readFileContent("dummy-file.txt")) 
     

@@ -2,20 +2,40 @@
 this is the adapter to connecting sigma.py and core.py, more like a view model
 but i prefer called it adapter
 """
+from os import times
 from utils import *
 from core import Sigma
 
 def nuke(path, algo):
-    print("WARNING THIS IS STILL UNDER DEVELOPMENT")
+    nuked =0
+    tokens = {}
+    print("\nWARNING THIS FUNCTION STILL UNDER DEVELOPMENT\n")
+    print("\n###### Scanning the targeted Dir ######\n")
     list_of_files = list_files(path)
-    print("\nsupported files : ", list_of_files)
+    if len(list_of_files) <=0:
+        print("INFO : nothing to nuke here")
+        return 0
+    print("###### Scanning the targeted Dir ######")
+    print()
+    print("Let's start the nuke")
+    #print("\nsupported files : ", list_of_files)
     for file in list_of_files:
-        the_file = path + file
-        content = readFileContent(the_file)
-        try :
-            encoded = algo.start_encode(content, token)
-            print(encoded)
+        token = algo.generate_token()
+        the_file = path +file
+        content = ""
+        try:
+            if fileSupported(the_file):
+                content = readFileContent(the_file)
         except Exception as e:
-            print(e)
-        
-        #makeCopyOfFile(file, encoded , "encrypted")
+            print("\nError: {} {}".format(the_file, e))
+            print("WTH are you doing list_files() function, this file is not supported but you included in the list\n")
+            continue
+        encoded = algo.start_encode(content, token)
+        overwrite_file(the_file, encoded)
+        print("Succesfully nuke file : " + file , "with token / key : ", token)
+        nuked += 1
+        tokens.update({file : str(token)})
+    token_file = storeTokenIntoFile(str(tokens), "nuked-dir", True)
+    print("succesfully nuked {} files from total {} files".format(nuked, len(list_of_files)))
+    print("keys is stored in file : ", token_file)
+    print("\n###### Nuke Completed ######")
