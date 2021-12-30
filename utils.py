@@ -30,13 +30,28 @@ def path_leaf(path):
 
 def readFileContent(filename):
     #read the file content, no matter it's from a path or dir / path
-    if os.path.isdir(filename):
-        filename = path_leaf(filename)
-    elif fileIsExist(filename):
-        with open(filename, 'r', encoding="utf-8") as f:
-            return f.read()
+    #if os.path.isdir(filename):
+        #filename = path_leaf(filename)
+    if fileIsExist(filename):
+        try:
+            with open(filename, 'r') as f:
+                return f.read()
+        except:
+            raise Exception("cannot read file contents")
     else:
         return None
+
+def fileSupported(filename):
+    #read the file content, no matter it's from a path or dir / path
+    #if os.path.isdir(filename):
+        #filename = path_leaf(filename)
+    if fileIsExist(filename):
+        try:
+            with open(filename, 'r') as f:
+                f.read()
+            return True
+        except:
+            raise Exception("is currently not supported")
 
 def makeCopyOfFile(oldFileName, newContent, status = "encrypted", retrieve_fileName = False):
     global newFileName
@@ -55,17 +70,24 @@ def storeTokenIntoFile(token, filename, retrieve_fileName = False):
 
 def list_files(dir_path):
     #list all "only" files in a directory
-    Lists = os.listdir(dir_path)
-    for file in Lists: #file recognition / testing the it's the file or not (anjay file recognition)
-        if readFileContent(file) == None:
-            Lists.remove(file)
-            
-    return Lists
+    _Lists = os.listdir(dir_path)
+    for file in _Lists: #file recognition / testing the it's the file or not (anjay file recognition)
+        try:
+            if fileSupported(dir_path + file):
+                print("file : " + file , "is supported\n")
+        except Exception as e:
+            print("Warning: {} {}".format( file, e))
+            _Lists.remove(file)
+            print("Removed from list : " , file, "\n")
+    print("list of supported files : ", _Lists)
+    return _Lists
 
 if __name__ == '__main__':
-    print("utils.py")
-    #file_path = "D:\\pokok wa\'ane seto\\Project\\Python\\absen-startup.json" #change it to your ouwn file or path
+    print("utils.py\n")
+    file_path = "D:\\dummy_folder\\" #change it to your ouwn file or path
     #print(readFileContent("dummy-file.txt"))
 
-    files = list_files(os.getcwd())
-    print(files)
+    files = list_files(file_path)
+    print()
+    
+    
