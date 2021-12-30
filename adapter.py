@@ -9,12 +9,14 @@ from core import Sigma
 def nuke(path, algo):
     nuked =0
     tokens = {}
-    print("\nWARNING THIS FUNCTION STILL UNDER DEVELOPMENT\n")
+    print("\nWARNING THIS FUNCTION STILL UNDER DEVELOPMENT")
     print("\n###### Scanning the targeted Dir ######\n")
+
     list_of_files = list_files(path)
     if len(list_of_files) <=0:
-        print("INFO : nothing to nuke here")
-        return 0
+        print("INFO : nothing to nuke here....\n")
+        exit()
+        
     print("###### Scanning the targeted Dir ######")
     print()
     print("Let's start the nuke")

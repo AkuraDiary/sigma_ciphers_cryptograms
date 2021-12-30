@@ -83,12 +83,37 @@ def list_files(dir_path):
     #print("list of supported files : ", _Lists)
     return _Lists
 
+def SeperateFileFromDir(root_path):
+    All_Lists = os.listdir(root_path)
+    File_List = []	
+    Dir_List = [root_path, ]	
+
+    for item in All_Lists:
+        item = os.path.join(root_path, item)
+        if os.path.isfile(item):
+            File_List.append(item)
+        else:
+            Dir_List.append(item)
+    return File_List, Dir_List
+    #'''
+def getSubDirs(Dir):
+    return [x[0] for x in os.walk(Dir)]
+
 if __name__ == '__main__':
-    print("utils.py\n")
+    '''print("utils.py\n")
     file_path = "D:\\dummy_folder\\" #change it to your ouwn file or path
 
     #files = list_files(file_path)
     print()
     file_path += "siswa-Copy.txt"
-    #overwrite_file(file_path, readFileContent("dummy-file.txt")) 
+    #overwrite_file(file_path, readFileContent("dummy-file.txt")) '''
+    Dirs = SeperateFileFromDir("D:\\")
+    print(getSubDirs("D:\\"))
+    '''
+    Directory = seperateFileAndDir(root_path)
+    for item in Directory:
+        new dir = seperateFileAndDir(item)
+        #adapter.nuke(item)
+    '''
+    
     
