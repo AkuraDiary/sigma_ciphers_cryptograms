@@ -1,3 +1,6 @@
+'''
+this file containts the automated test function to test the sigma algorithm
+'''
 from core import Sigma
 import utils
 import threading

@@ -1,10 +1,13 @@
+'''
+it's the core of the sigma algorithm
+'''
+
 import random
 from algo.AN import AN
 from algo.caesar import caesar
 from algo.ABZA import ABZA
 from algo.atbash import atbash
 from algo.ciphers import ciphers
-import utils
 
 class Sigma(ciphers):
     def  __init__(self):

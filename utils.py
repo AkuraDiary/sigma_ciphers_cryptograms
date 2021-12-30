@@ -1,4 +1,7 @@
-from genericpath import isdir
+'''
+this file containts method for utilities, mainly file utilities
+'''
+
 import os
 import ntpath
 import re
