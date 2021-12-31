@@ -96,7 +96,6 @@ def File_Test(file_path = "dummy-file.txt", constraint = 8, print_result = False
     print("### testing with file ###")
     print()#jarak
 
-
 def succes_fail_summary(testName , success_counter, fail_counter):
     print("{} TEST RESULT : ".format(testName))
     print("Total : {}".format(success_counter+fail_counter))
@@ -124,7 +123,7 @@ if __name__ == "__main__":
 
     print()#jarak
 
-    '''
+    #'''
     file_path = "D:\\pokok wa\'ane seto\\Project\\Python\\absen-startup.json" #change it to your ouwn file or path
     file_name = "absen-startup.json"
     print("testing to encrypt file and generate token file")
@@ -142,5 +141,7 @@ if __name__ == "__main__":
     if decoded_text == content and encoded_text != content:
         print("Decrypting : OK")
     #'''
+
+    
 
     print("\nTESTING SIGMA ALGORITHM \n")
