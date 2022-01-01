@@ -6,6 +6,8 @@ from os import times
 from utils import *
 from core import Sigma
 
+sigma = Sigma()
+
 def nuke(path, algo):
     nuked =0
     tokens = {}
@@ -45,6 +47,7 @@ def nuke(path, algo):
 
 def Encoder():
     print("this is encoder module")
+
 
 def Decoder():
     print("this is decoder module")
