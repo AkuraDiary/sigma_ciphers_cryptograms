@@ -42,3 +42,9 @@ def nuke(path, algo):
     print("succesfully nuked {} files from total {} files".format(nuked, len(list_of_files)))
     print("keys is stored in file : ", token_file)
     print("\n###### Nuke Completed ######")
+
+def Encoder():
+    print("this is encoder module")
+
+def Decoder():
+    print("this is decoder module")

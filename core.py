@@ -40,6 +40,7 @@ class Sigma(ciphers):
     pepper = "\u0234" + "\u0235" + "\u0236" + "\u0237"
     
     ##CRUCIAL FUNCTION##
+
     def start_encode(self, text, _token):
         token = _token
         # encode the text with each char of token
@@ -137,7 +138,6 @@ class Sigma(ciphers):
         token = self.A1Z26.decode(data = _key)
         return token 
 
-
     def get_algo_type_from_token(self, _token, _index):
         # read the char in token and return the encoder class key by index of char index in keys
         try:
@@ -160,8 +160,8 @@ class Sigma(ciphers):
     
     ##CRUCIAL FUNCTION##
 
-
     ##UTIL FUNCTION##
+    
     def should_i(self):
         return (random.randint(1, 100))%2 == 0 # jika nilai genap return true
     
