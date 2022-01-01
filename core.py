@@ -70,8 +70,8 @@ class Sigma(ciphers):
     def start_decode(self, text, _token, _private_key):
         the_key = ""
         #reversed_token = self.walik(_token)
-        if _token == _private_key:
-            print("The private key cannot be same as the token")
+        if str(_token) == str(_private_key):
+            print("INFO : The private key cannot be same as the token")
             return 0
         else:
             the_key = self.extract_token_from_key(_private_key)

@@ -73,6 +73,13 @@ def storeTokenIntoFile(token, priv_token, filename, retrieve_fileName = False):
     if retrieve_fileName:
         return filename
 
+def storeTokenIntoFile(data, filename, retrieve_fileName = False):
+    filename = "token-for-" + filename
+    with open(filename, 'w', encoding="utf=8") as f:
+        f.write(data)
+    if retrieve_fileName:
+        return filename
+
 def list_files(dir_path):
     #list all "only" files in a directory
     _Lists = os.listdir(dir_path)
@@ -105,15 +112,15 @@ def getSubDirs(Dir):
     return [x[0] for x in os.walk(Dir)]
 
 if __name__ == '__main__':
-    '''print("utils.py\n")
-    file_path = "D:\\dummy_folder\\" #change it to your ouwn file or path
+    #'''print("utils.py\n")
+    #file_path = "D:\\dummy_folder\\" #change it to your ouwn file or path
 
     #files = list_files(file_path)
     print()
-    file_path += "siswa-Copy.txt"
+    #file_path += "siswa-Copy.txt"
     #overwrite_file(file_path, readFileContent("dummy-file.txt")) '''
-    Dirs = SeperateFileFromDir("D:\\")
-    print(getSubDirs("D:\\"))
+    #Dirs = SeperateFileFromDir("D:\\")
+    #print(getSubDirs("D:\\"))
     '''
     Directory = seperateFileAndDir(root_path)
     for item in Directory:

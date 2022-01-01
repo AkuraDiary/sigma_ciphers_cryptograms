@@ -127,7 +127,7 @@ if __name__ == "__main__":
 
     print()#jarak
     #'''
-    '''
+    #'''
     file_path = "D:\\pokok wa\'ane seto\\Project\\Python\\absen-startup.json" #change it to your ouwn file or path
     file_name = "absen-startup.json"
     print("testing to encrypt file and generate token file")

