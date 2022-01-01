@@ -37,8 +37,9 @@ def base_test(data, token_leng=8):
     # base encrypting and decrypting test to used it in threaded test
     try:
         token = algo.generate_token(token_leng)
+        private_key = algo.generate_private_key(token)
         encoded = algo.start_encode(data, token)
-        decoded = algo.start_decode(encoded, token)
+        decoded = algo.start_decode(encoded, token, private_key)
         #print()#jarak
         #print("BASE TEST RESULT : ")
         if decoded == data and encoded != data:
@@ -59,7 +60,8 @@ def test_text_with_ranged_token_len(text, constraint = 257, print_log_result = F
         for i in range(1, constraint):
             token = algo.generate_token(_token_length=i)
             encoded = algo.start_encode(text, token)
-            decoded = algo.start_decode(encoded, token)
+            private_key = algo.generate_private_key(token)
+            decoded = algo.start_decode(encoded, token, private_key)
             if decoded == text and encoded != text:
                 if print_log_result:
                     print("Token : {}".format(token))
@@ -80,8 +82,9 @@ def File_Test(file_path = "dummy-file.txt", constraint = 8, print_result = False
     print("### testing with file ###")
     content = utils.readFileContent(file_path)
     dummy_token = algo.generate_token(constraint)
+    private_key = algo.generate_private_key(dummy_token)
     encoded_text = algo.start_encode(content, dummy_token)
-    decoded_text = algo.start_decode(encoded_text, dummy_token)
+    decoded_text = algo.start_decode(encoded_text, dummy_token, private_key)
 
     print("File : ", file_path)
 
@@ -108,6 +111,7 @@ if __name__ == "__main__":
 
     print("\nTESTING SIGMA ALGORITHM \n")
 
+    #'''
     print("testing with text : ")
     text = "Never Gonna Give You Up, Never Gonna Make You Cry, Never Gonna Run Around and Desert You"
     print("Text : ",text)
@@ -122,22 +126,23 @@ if __name__ == "__main__":
     threaded_test(file_content, 257)
 
     print()#jarak
-
     #'''
+    '''
     file_path = "D:\\pokok wa\'ane seto\\Project\\Python\\absen-startup.json" #change it to your ouwn file or path
     file_name = "absen-startup.json"
     print("testing to encrypt file and generate token file")
     print("File : ", file_path)
     token = algo.generate_token(257)
+    private_key = algo.generate_private_key(token)
     content = utils.readFileContent(file_path)
     encoded_text = algo.start_encode(content, token)
     newFilename = utils.makeCopyOfFile(file_name, encoded_text, retrieve_fileName=True)
-    tokenFile = utils.storeTokenIntoFile(token, file_name, retrieve_fileName=True)
+    tokenFile = utils.storeTokenIntoFile(token, private_key, file_name, retrieve_fileName=True)
     print("Succesfully encode {} and store token into {}".format(file_name, file_name))
     print("now decrypt it")
     print("File : ", newFilename)
     print("Token File: ", tokenFile)
-    decoded_text = algo.start_decode(utils.readFileContent(newFilename), utils.readFileContent(tokenFile))
+    decoded_text = algo.start_decode(utils.readFileContent(newFilename), utils.readFileContent(tokenFile), private_key)
     if decoded_text == content and encoded_text != content:
         print("Decrypting : OK")
     #'''

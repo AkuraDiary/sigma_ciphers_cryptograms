@@ -61,10 +61,15 @@ def overwrite_file(file, content):
     with open(file, 'w', encoding="utf-8") as f:
         f.write(content)
 
-def storeTokenIntoFile(token, filename, retrieve_fileName = False):
+def storeTokenIntoFile(token, priv_token, filename, retrieve_fileName = False):
     filename = "token-for-" + filename
     with open(filename, 'w', encoding="utf=8") as f:
+        f.write("pub :")
         f.write(token)
+        f.write("\n")
+        f.write("priv :")
+        f.write(priv_token)
+        f.write("\n")
     if retrieve_fileName:
         return filename
 

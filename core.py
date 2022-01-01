@@ -8,6 +8,7 @@ from algo.caesar import caesar
 from algo.ABZA import ABZA
 from algo.atbash import atbash
 from algo.ciphers import ciphers
+from algo.A1Z26 import A1Z26
 
 class Sigma(ciphers):
     def  __init__(self):
@@ -18,6 +19,7 @@ class Sigma(ciphers):
     Atbash = atbash()
     Abza = ABZA()
     AN = AN()
+    A1Z26 = A1Z26()
     
     encoder_class_key = [
     Caesar,
@@ -65,8 +67,16 @@ class Sigma(ciphers):
 
         return str(result)
     
-    def start_decode(self, text, _token):
-        reversed_token = self.walik(_token)
+    def start_decode(self, text, _token, _private_key):
+        the_key = ""
+        #reversed_token = self.walik(_token)
+        if _token == _private_key:
+            print("The private key cannot be same as the token")
+            return 0
+        else:
+            the_key = self.extract_token_from_key(_private_key)
+        the_key = self.walik(the_key)
+        
         result = text
 
         #checking for spaces and enters (carriage return) symbols first and encode it and cleaning the spices
@@ -78,9 +88,9 @@ class Sigma(ciphers):
             elif (text[i] in self.salt) or (text[i] in self.pepper):
                 result = result.replace(text[i], "")
 
-        for i in range(len(reversed_token)):
+        for i in range(len(the_key)):
             # get the encoder class key by token
-            algo = self.get_algo_type_from_token(reversed_token, i)
+            algo = self.get_algo_type_from_token(the_key, i)
             # decode the text with the encoder class key
             result = algo.decode(result)
 
@@ -112,7 +122,22 @@ class Sigma(ciphers):
                     #no i should not
                     pass
         return token
+
+    def generate_private_key(self, _token):
+        # generate a private key from the token
+        #str(_token)
+        private_key = self.A1Z26.encode(data = _token)
+        #private_key = self.walik(private_key)
+        return private_key
     
+    def extract_token_from_key(self, _key):
+        # extract the token from the private key
+        #str(_key.strip())
+        #token = self.walik(_key)
+        token = self.A1Z26.decode(data = _key)
+        return token 
+
+
     def get_algo_type_from_token(self, _token, _index):
         # read the char in token and return the encoder class key by index of char index in keys
         try:
@@ -135,6 +160,7 @@ class Sigma(ciphers):
     
     ##CRUCIAL FUNCTION##
 
+
     ##UTIL FUNCTION##
     def should_i(self):
         return (random.randint(1, 100))%2 == 0 # jika nilai genap return true
@@ -151,3 +177,13 @@ class Sigma(ciphers):
 
 if __name__ == "__main__":
     print("""INFO : this is Sigma core module you can use it as a library \nor from interfaces in sigma.py""")
+    sigma = Sigma()
+    text = "Never Gonna Give You Up"
+    token = sigma.generate_token()
+    private_key = sigma.generate_private_key(token)
+    print("token / public key: " + str(token))
+    print("private key: " + str(private_key))
+    encoded_text = sigma.start_encode(text, token)
+    print("encoded text: " + encoded_text)
+    print("decoded text: " + sigma.start_decode(encoded_text, token, private_key))
+    
