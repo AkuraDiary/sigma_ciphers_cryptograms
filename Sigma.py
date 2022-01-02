@@ -13,6 +13,15 @@ flags_list = [
     "-nuke", "--nuke"
 ]
 
+def Nuker():
+    print("THIS IS SIGMA NUKER PLEASE PROCEED WITH CAUTION")
+    Directory = str(input("Please enter the directory to nuke (type \"thisdir\" to nuke this directory): "))
+    if Directory.lower() == "thisdir":
+        Directory = os.getcwd()
+    import utils
+    print(utils.list_files(Directory))
+
+
 def isFlag(arg):
     if arg.startswith(("-" , "--")):
         return True
@@ -46,9 +55,38 @@ def main():
 
 def cli_mode():
     print("########## SIGMA CLI MODE ##########")
+    while True:
+        try:
+            print("\nPlease enter a command : ")
+            command = str(input(">>> "))
+            command.strip()
+            print()#jarak
+            if command == "exit":
+                print("Goodbye")
+                break
+            elif command == "help":
+                print("###### Commands ######")
+                print("exit : exit the program")
+                print("help : show the help")
+                print("encode : encode a message or file")
+                print("decode : decode a message or file")
+                print("nuke : nuke a directory")
+            elif command == "encode":
+                adapter.Encoder()
+            elif command == "decode":
+                adapter.Decoder()
+            elif command == "nuke":
+                Nuker()
+            else:
+                print("Command not found / invalid command : " + command + "\n")
+        except KeyboardInterrupt:
+            print("Goodbye")
+            sys.exit()
+        except Exception as e:
+            print("Something went wrong : ", e + "\n")
 
 if __name__ == "__main__":
-    #main()    
-    print(os.listdir("D:\\"))
+    main()    
+    #print(os.listdir("D:\\"))
     #adapter.nuke("D:\\dummy_folder\\", Sigma)
     

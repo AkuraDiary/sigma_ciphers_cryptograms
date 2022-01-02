@@ -2,7 +2,6 @@
 this is the adapter to connecting sigma.py and core.py, more like a view model
 but i prefer called it adapter
 """
-from os import times
 from utils import *
 from core import Sigma
 
