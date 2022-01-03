@@ -15,7 +15,7 @@ class A1Z26(ciphers):
                     index = self._alphabet.getIndexOfLowercase(word)
                     result += str(index) + "`"
             else:
-                result += word
+                result += str(word)
         return result
     
     def decode(self, data):
@@ -29,7 +29,7 @@ class A1Z26(ciphers):
                 result += self._alphabet.getLowercaseByIndex(int(temp))
                 temp = ""
             else:
-                result += num
+                result += str(num)
 
         return result
      
