@@ -18,9 +18,12 @@ def Nuker():
     Directory = str(input("Please enter the directory to nuke (type \"thisdir\" to nuke this directory): "))
     if Directory.lower() == "thisdir":
         Directory = os.getcwd()
+    
     import utils
-    print(utils.list_files(Directory))
+    files = utils.list_files(Directory)
 
+    print("Nuking " + Directory)
+    print("files : " + str(files))
 
 def isFlag(arg):
     if arg.startswith(("-" , "--")):
