@@ -46,6 +46,29 @@ def nuke(path, algo):
 
 def Encoder():
     print("this is encoder module")
+    input_file = input("\nPlease enter the text to encode : ")
+    if input_file == "exit":
+        print("Goodbye")
+        exit()
+    else:
+        token = ""
+        print("\n###### Encoding the text ######")
+        print()
+        print("Let's start the encode")
+        answer = input("\nDo you have your own token ? (y/n) : ")
+        if answer.lower() == "y":
+            token = input("\nPlease enter your token : ")
+        else:
+            token_len = input("\nPlease enter the token length : ")
+            token = sigma.generate_token(int(token_len))
+            
+        priv_key = sigma.generate_private_key(token)
+        encoded = sigma.start_encode(input_file, token)
+        print("succesfully encoded the text")
+        print("token / public key : ", token)
+        print("private key : ", priv_key)
+        print("encoded : ", encoded)
+        print("\n###### Encoding Completed ######")
 
 
 def Decoder():
