@@ -46,29 +46,45 @@ def nuke(path, algo):
 
 def Encoder():
     print("this is encoder module")
-    input_file = input("\nPlease enter the text to encode : ")
-    if input_file == "exit":
-        print("Goodbye")
-        exit()
-    else:
-        token = ""
-        print("\n###### Encoding the text ######")
-        print()
-        print("Let's start the encode")
-        answer = input("\nDo you have your own token ? (y/n) : ")
-        if answer.lower() == "y":
-            token = input("\nPlease enter your token : ")
+    data = ""
+    token = ""
+    file_or_text = input("\nFile or Text ? : ")
+    if file_or_text.lower() == "file":
+        file_path = input("\nEnter the file path : ")
+        if fileSupported(file_path):
+            data = readFileContent(file_path)
+            print("\nSuccesfully encode file : " + file_path)
         else:
-            token_len = input("\nPlease enter the token length : ")
-            token = sigma.generate_token(int(token_len))
-            
-        priv_key = sigma.generate_private_key(token)
-        encoded = sigma.start_encode(input_file, token)
-        print("succesfully encoded the text")
-        print("token / public key : ", token)
-        print("private key : ", priv_key)
-        print("encoded : ", encoded)
-        print("\n###### Encoding Completed ######")
+            print("\nError: {} is not supported".format(file_path))
+
+    elif file_or_text.lower() == "text":
+    
+        data = input("\nPlease enter the text to encode : ")
+        print()
+
+    print("Let's start the encode")
+    answer = input("\nDo you have your own token ? (y/n) : ")
+    if answer.lower() == "y":
+        token = input("\nPlease enter your token : ")
+    else:
+        token_len = input("\nPlease enter the token length : ")
+        token = sigma.generate_token(int(token_len))
+    priv_key = sigma.generate_private_key(token)
+    encoded = sigma.start_encode(data, token)
+    print("succesfully encoded")
+    print("token / public key : ", token)
+    print("private key : ", priv_key)
+    print("encoded : ", encoded)
+    print("\n###### Encoding Completed ######")
+
+    save_to_file = input("\nDo you want to save the encoded data to file ? (y/n) : ")
+    if save_to_file.lower() == "y":
+        new_file_name = input("\nPlease enter the file name : ")
+        makeCopyOfFile(new_file_name, encoded)
+        storeTokenIntoFile(token, priv_key, new_file_name, False)
+    else:
+        print("okay")
+
 
 
 def Decoder():

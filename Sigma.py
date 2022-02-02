@@ -75,7 +75,10 @@ def cli_mode():
                 print("decode : decode a message or file")
                 print("nuke : nuke a directory")
             elif command == "encode":
-                adapter.Encoder()
+                try:
+                    adapter.Encoder()
+                except KeyboardInterrupt:
+                    continue
             elif command == "decode":
                 adapter.Decoder()
             elif command == "nuke":
