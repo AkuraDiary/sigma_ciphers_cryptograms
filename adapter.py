@@ -89,3 +89,34 @@ def Encoder():
 
 def Decoder():
     print("this is decoder module")
+    print("this is encoder module")
+    data = ""
+    token = ""
+    file_or_text = input("\nFile or Text ? : ")
+    if file_or_text.lower() == "file":
+        file_path = input("\nEnter the file path : ")
+        if fileSupported(file_path):
+            data = readFileContent(file_path)
+            print("\nSuccesfully encode file : " + file_path)
+        else:
+            print("\nError: {} is not supported".format(file_path))
+
+    elif file_or_text.lower() == "text":
+    
+        data = input("\nPlease enter the text to encode : ")
+        print()
+
+    print("Let's start the encode")
+    answer = input("\nDo you have your own token ? (y/n) : ")
+    if answer.lower() == "y":
+        token = input("\nPlease enter your token : ")
+    else:
+        token_len = input("\nPlease enter the token length : ")
+        token = sigma.generate_token(int(token_len))
+    priv_key = sigma.generate_private_key(token)
+    encoded = sigma.start_decode(data, token, priv_key)
+    print("succesfully encoded")
+    print("token / public key : ", token)
+    print("private key : ", priv_key)
+    print("encoded : ", encoded)
+    print("\n###### Encoding Completed ######")
