@@ -23,12 +23,14 @@ if you had another classic algorithm or custom algorithm that you want to add in
 ## How it works (Sigma in Action) 🧀
 > in a nutshell, it works by generating a token, and encrypt or decrypt the text / data into some kinda human-unreadable text from that token char by char, and the length of the token is adjustable
 
+## under renovation 🥯
+<!--
 Testing it :
 I use automated testing file (test_case.py) so, here's the summary
 ![summary test](https://github.com/AkuraDiary/sigma-ciphers-cryptograms/blob/main/images/test_summarry.png)
 
 > if you want to test it yourself, you can run it on test_case.py (you can adjust the parameters by yourself)
-
+-->
 ## To Do Next 🥛
 - ###  🌮 add file utilities
 - ### ⌨️ add command line mechanism
