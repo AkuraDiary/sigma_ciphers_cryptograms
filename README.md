@@ -20,8 +20,21 @@ if you had another classic algorithm or custom algorithm that you want to add in
 ### - doing some encrypted message with your friend, or on exams 🤨
 ### - Implementing this into some service 🥖
 
-## How it works (Sigma in Action) 🧀
-> in a nutshell, it works by generating a token, and encrypt or decrypt the text / data into some kinda human-unreadable text from that token char by char, and the length of the token is adjustable
+## How to Use in Windows (Oversimplified)
+- Make sure you have git and python 3 installed properly
+- clone this repo using  ```git clone https://github.com/AkuraDiary/sigma-ciphers-cryptograms.git ```
+- Just open terminal in where you save this project, and type ```py Sigma.py```
+- and you will get into the CLI interfaces, here is the command list, although you could type `help`
+```
+###### Commands ######
+exit : exit the program
+help : show the help
+encode : encode a message or file
+decode : decode a message or file
+nuke : nuke a directory
+```
+
+for linux users, you guys are pro, so you know what to do
 
 ## under renovation 🥯
 <!--
