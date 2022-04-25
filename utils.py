@@ -2,9 +2,11 @@
 this file containts method for utilities, mainly file utilities
 '''
 
+from encodings import utf_8
 import os
 import ntpath
 import re
+from tkinter import E
 
 #var
 token = ""
@@ -43,11 +45,13 @@ def fileSupported(filename):
     # check if the file is supported or not
     if fileIsExist(filename):
         try:
-            with open(filename, 'r') as f:
+            with open(filename, 'r', encoding="utf_8") as f:
                 f.read()
             return True
-        except:
-            raise Exception("is currently not supported")
+        except Exception as E:
+            print(E)
+            return False
+            #raise Exception("is currently not supported")
 
 def makeCopyOfFile(oldFileName, newContent, status = "encrypted", retrieve_fileName = False):
     global newFileName

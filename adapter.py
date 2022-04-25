@@ -96,12 +96,15 @@ def Decoder():
     file_or_text = input("\nFile or Text ? : ")
     if file_or_text.lower() == "file":
         file_path = input("\nEnter the file path : ")
+        
         if fileSupported(file_path):
+            print("file supported")
             data = readFileContent(file_path)
-            print("\nChecked if File is supported : " + file_path)
+            #print("\nChecked if File is supported : " + file_path)
         else:
             print("\nError: {} is not supported".format(file_path))
             print("ctrl + c to cancel")
+            exit()
 
     elif file_or_text.lower() == "text":
     
