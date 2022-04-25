@@ -68,6 +68,7 @@ def Encoder():
     if answer.lower() == "y":
         token = input("\nPlease enter your token : ")
     else:
+        print("### generating token ###")
         token_len = input("\nPlease enter the token length : ")
         token = sigma.generate_token(int(token_len))
     priv_key = sigma.generate_private_key(token)
@@ -107,17 +108,17 @@ def Decoder():
         data = input("\nPlease enter the text to encode : ")
         print()
 
-    print("Let's start the encode")
-    answer = input("\nDo you have your own token ? (y/n) : ")
+    print("Let's start the decode")
+    answer = input("\nDo you have your private key ? (y/n) : ")
     if answer.lower() == "y":
-        token = input("\nPlease enter your token : ")
+        token = input("\nPlease enter your private key : ")
     else:
-        token_len = input("\nPlease enter the token length : ")
-        token = sigma.generate_token(int(token_len))
-    priv_key = sigma.generate_private_key(token)
-    decoded = sigma.start_decode(data, token, priv_key)
+        print("### you must have token ###")
+        raise Exception("you must have token")
+        #token_len = input("\nPlease enter the token length : ")
+        #token = sigma.generate_token(int(token_len))
+    priv_key = token #sigma.generate_private_key(token)
+    decoded = sigma.start_decode(data, priv_key)
     print("succesfully decoded")
-    print("token / public key : ", token)
-    print("private key : ", priv_key)
     print("decoded : ", decoded)
     print("\n###### Decoding Completed ######")
