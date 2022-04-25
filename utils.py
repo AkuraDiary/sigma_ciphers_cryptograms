@@ -73,10 +73,14 @@ def storeTokenIntoFile(token, priv_token, filename, retrieve_fileName = False):
     if retrieve_fileName:
         return filename
 
-def storeTokenIntoFile(data, filename, retrieve_fileName = False):
+def storeTokenIntoFile(token_data, key_data, filename, retrieve_fileName = False):
     filename = "token-for-" + filename
     with open(filename, 'w', encoding="utf=8") as f:
-        f.write(data)
+        f.write("Token : ")
+        f.write(token_data)
+        f.write("\n")
+        f.write("Key : ")
+        f.write(key_data)
     if retrieve_fileName:
         return filename
 
