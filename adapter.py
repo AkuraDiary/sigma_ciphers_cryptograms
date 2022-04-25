@@ -53,9 +53,10 @@ def Encoder():
         file_path = input("\nEnter the file path : ")
         if fileSupported(file_path):
             data = readFileContent(file_path)
-            print("\nSuccesfully encode file : " + file_path)
+            print("\nChecked if File is supported : " + file_path)
         else:
             print("\nError: {} is not supported".format(file_path))
+            print("ctrl + c to cancel")
 
     elif file_or_text.lower() == "text":
     
@@ -96,9 +97,10 @@ def Decoder():
         file_path = input("\nEnter the file path : ")
         if fileSupported(file_path):
             data = readFileContent(file_path)
-            print("\nChecked File is supported : " + file_path)
+            print("\nChecked if File is supported : " + file_path)
         else:
             print("\nError: {} is not supported".format(file_path))
+            print("ctrl + c to cancel")
 
     elif file_or_text.lower() == "text":
     
