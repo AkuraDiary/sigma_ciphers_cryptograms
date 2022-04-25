@@ -89,7 +89,6 @@ def Encoder():
 
 def Decoder():
     print("this is decoder module")
-    print("this is encoder module")
     data = ""
     token = ""
     file_or_text = input("\nFile or Text ? : ")
@@ -97,7 +96,7 @@ def Decoder():
         file_path = input("\nEnter the file path : ")
         if fileSupported(file_path):
             data = readFileContent(file_path)
-            print("\nSuccesfully encode file : " + file_path)
+            print("\nChecked File is supported : " + file_path)
         else:
             print("\nError: {} is not supported".format(file_path))
 
