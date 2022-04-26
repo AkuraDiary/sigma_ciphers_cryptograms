@@ -2,3 +2,4 @@ __pycache__
 output
 encrypted-absen-startup.json
 token-for-absen-startup.json
+*.txt
