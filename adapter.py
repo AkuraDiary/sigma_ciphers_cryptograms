@@ -120,8 +120,9 @@ def Decoder():
     if answer.lower() == "y":
         token = input("\nPlease enter your private key : ")
     else:
-        print("### you must have token ###")
-        raise Exception("you must have token")
+        print()
+        print("### you must have your private key, otherwise you can't decode it  ###")
+        return "User Don't have key"
         #token_len = input("\nPlease enter the token length : ")
         #token = sigma.generate_token(int(token_len))
     priv_key = token #sigma.generate_private_key(token)
