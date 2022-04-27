@@ -69,8 +69,12 @@ def Encoder():
         token = input("\nPlease enter your token : ")
     else:
         print("### generating token ###")
-        token_len = input("\nPlease enter the token length : ")
-        token = sigma.generate_token(int(token_len))
+        try:
+            token_len = int(input("\nPlease enter the token length : "))
+            token = sigma.generate_token(token_len)
+        except:
+            print("Not detecting any input from user, using default token length")
+            token = sigma.generate_token()
     priv_key = sigma.generate_private_key(token)
     encoded = sigma.start_encode(data, token)
     print("succesfully encoded")

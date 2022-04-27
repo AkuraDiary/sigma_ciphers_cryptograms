@@ -94,7 +94,7 @@ class Sigma(ciphers):
         return str(result)
 
     def generate_token(self, _token_length=8):
-        # generate a random token from keys with a customable length
+        # generate a random token from keys with a customable length (default is 8)
         token = ""
         u_keys = self.uppercase_keys
         s_keyss = self.symbol_keys
