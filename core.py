@@ -122,15 +122,11 @@ class Sigma(ciphers):
 
     def generate_private_key(self, _token):
         # generate a private key from the token
-        #str(_token)
         private_key = self.A1Z26.encode(data = _token)
-        #private_key = self.walik(private_key)
+        
         return private_key
     
     def extract_token_from_key(self, _key):
-        # extract the token from the private key
-        #str(_key.strip())
-        #token = self.walik(_key)
         token = self.A1Z26.decode(data = _key)
         return token 
 
