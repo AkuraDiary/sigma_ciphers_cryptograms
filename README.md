@@ -37,6 +37,8 @@ nuke : nuke a directory
 for linux users, you guys are pro, so you know what to do
 
 ## under renovation 🥯
+
+## TODO NEW SCREENSHOOTS
 <!--
 Testing it :
 I use automated testing file (test_case.py) so, here's the summary
