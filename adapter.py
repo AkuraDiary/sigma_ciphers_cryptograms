@@ -123,9 +123,8 @@ def Decoder():
         print()
         print("### you must have your private key, otherwise you can't decode it  ###")
         return "User Don't have key"
-        #token_len = input("\nPlease enter the token length : ")
-        #token = sigma.generate_token(int(token_len))
-    priv_key = token #sigma.generate_private_key(token)
+       
+    priv_key = token 
     decoded = sigma.start_decode(data, priv_key)
     print("succesfully decoded")
     print("decoded : ", decoded)
