@@ -51,7 +51,7 @@ def fileSupported(filename):
         except Exception as E:
             print(E)
             return False
-            #raise Exception("is currently not supported")
+            
 
 def makeCopyOfFile(oldFileName, newContent, status = "encrypted", retrieve_fileName = False):
     global newFileName
