@@ -39,13 +39,7 @@ for linux users, you guys are pro, so you know what to do
 ## under renovation 🥯
 
 ## TODO NEW SCREENSHOOTS
-<!--
-Testing it :
-I use automated testing file (test_case.py) so, here's the summary
-![summary test](https://github.com/AkuraDiary/sigma-ciphers-cryptograms/blob/main/images/test_summarry.png)
-
-> if you want to test it yourself, you can run it on test_case.py (you can adjust the parameters by yourself)
--->
+    
 ## To Do Next 🥛
 - ###  🌮 add file utilities
 - ### ⌨️ add command line mechanism
