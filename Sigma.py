@@ -15,6 +15,7 @@ flags_list = [
 
 def Nuker():
     print("THIS IS SIGMA NUKER PLEASE PROCEED WITH CAUTION")
+    print("THIS FEATURE IS PREVIEW ONLY, SO IT WONT DO ANY DAMAGE")
     Directory = str(input("Please enter the directory to nuke (type \"thisdir\" to nuke this directory): "))
     if Directory.lower() == "thisdir":
         Directory = os.getcwd()
