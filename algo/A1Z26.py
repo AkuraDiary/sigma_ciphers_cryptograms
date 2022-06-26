@@ -1,4 +1,4 @@
-from algo.ciphers import ciphers
+from sigma_ciphers_cryptograms.algo.ciphers import ciphers
 class A1Z26(ciphers):
     def __init__(self):
         super().__init__()

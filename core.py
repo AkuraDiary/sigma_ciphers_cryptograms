@@ -3,12 +3,12 @@ it's the core of the sigma algorithm
 '''
 
 import random
-from algo.AN import AN
-from algo.caesar import caesar
-from algo.ABZA import ABZA
-from algo.atbash import atbash
-from algo.ciphers import ciphers
-from algo.A1Z26 import A1Z26
+from sigma_ciphers_cryptograms.algo.AN import AN
+from sigma_ciphers_cryptograms.algo.caesar import caesar
+from sigma_ciphers_cryptograms.algo.ABZA import ABZA
+from sigma_ciphers_cryptograms.algo.atbash import atbash
+from sigma_ciphers_cryptograms.algo.ciphers import ciphers
+from sigma_ciphers_cryptograms.algo.A1Z26 import A1Z26
 
 class Sigma(ciphers):
     def  __init__(self):
