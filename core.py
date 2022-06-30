@@ -9,6 +9,7 @@ from algo.ABZA import ABZA
 from algo.atbash import atbash
 from algo.ciphers import ciphers
 from algo.A1Z26 import A1Z26
+from algo.polyalphabetic import polyalphabetic
 
 class Sigma(ciphers):
     def  __init__(self):
@@ -20,6 +21,7 @@ class Sigma(ciphers):
     Abza = ABZA()
     AN = AN()
     A1Z26 = A1Z26()
+    poly = polyalphabetic()
     
     encoder_class_key = [
     Caesar,
@@ -41,15 +43,22 @@ class Sigma(ciphers):
     
     ##CRUCIAL FUNCTION##
 
-    def start_encode(self, text, _token):
+    def start_encode(self, text, _token, wrapPoly=True):
         token = _token
+        result = text        
+
+        # Added first wrap of second Layer encryption with polyalphabetic cipher
+        if wrapPoly: #backward compatible mechanism
+            for i in range(len(result)): #
+                result = self.poly.encode(result, self.generate_private_key(token))
+
         # encode the text with each char of token
-        result = text
         for i in range(len(token)):
             # get the encoder class key by token
             algo = self.get_algo_type_from_token(token, i)
             # encode the text with the encoder class key
             result = algo.encode(result)
+
 
         #encoding the spaces and enter keys
         for i in range(len(result)):
@@ -57,7 +66,13 @@ class Sigma(ciphers):
                 result = result.replace(result[i], random.choice(self.space_keys), 1)
             elif text[i] == "\n":
                 result = result.replace(result[i], random.choice(self.enter_keys), 1)
-        
+
+        ## Added second wrap Second Layer encryption with polyalphabetic cipher
+        if wrapPoly: #backward compatible mechanism
+            for i in range(len(token)):
+                result = self.walik(result)
+                result = self.poly.encode(result, self.generate_private_key(token))
+
         #adding the spices
         for i in range(len(result)):
             if self.should_i():
@@ -66,30 +81,47 @@ class Sigma(ciphers):
                 index = result.find(result[i])
                 result = result[:index] + random.choice([salt, pepper]) + result[index:]
 
+
         return str(result)
     
-    def start_decode(self, text, _private_key):
+    def start_decode(self, text, _private_key, wrapPoly=True):
         the_key = ""
         #reversed_token = self.walik(_token)
         the_key = self.extract_token_from_key(_private_key)
-        the_key = self.walik(the_key)
+        #the_key = self.walik(the_key)
         
         result = text
 
-        #checking for spaces and enters (carriage return) symbols first and encode it and cleaning the spices
+        #cleaning the spices
+        for i in range(len(text)):
+            if (text[i] in self.salt) or (text[i] in self.pepper):
+                result = result.replace(text[i], "")
+
+        ## peeling the first wrap of the polyalphabetic cipher
+        if wrapPoly: #backward compatible mechanism
+            for i in range(len(the_key)):
+                result = self.poly.decode(result, _private_key)
+                result = self.walik(result)
+
+         #checking for spaces and enters (carriage return) symbols first and encode it
         for i in range(len(text)):
             if text[i] in self.space_keys:
                 result = result.replace(text[i], " ")
             elif text[i] in self.enter_keys:
                 result = result.replace(text[i], "\n")
-            elif (text[i] in self.salt) or (text[i] in self.pepper):
-                result = result.replace(text[i], "")
 
+        ## basic sigma decode # decode the text with each char of token
         for i in range(len(the_key)):
             # get the encoder class key by token
             algo = self.get_algo_type_from_token(the_key, i)
             # decode the text with the encoder class key
             result = algo.decode(result)
+        
+         ## peeling the second wrap of the polyalphabetic cipher
+        if wrapPoly: #backward compatible mechanism
+            for i in range(len(result)):
+                result = self.poly.decode(result, private_key)
+                
 
         return str(result)
 
@@ -122,13 +154,13 @@ class Sigma(ciphers):
 
     def generate_private_key(self, _token):
         # generate a private key from the token
+        _token=self.walik(_token)
         private_key = self.A1Z26.encode(data = _token)
-        
         return private_key
     
     def extract_token_from_key(self, _key):
         token = self.A1Z26.decode(data = _key)
-        return token 
+        return token
 
     def get_algo_type_from_token(self, _token, _index):
         # read the char in token and return the encoder class key by index of char index in keys
@@ -171,11 +203,22 @@ if __name__ == "__main__":
     print("""INFO : this is Sigma core module you can use it as a library \nor from interfaces in sigma.py""")
     sigma = Sigma()
     text = "Never Gonna Give You Up"
-    token = sigma.generate_token()
+    token =  "ada$c!ba" #sigma.generate_token()
     private_key = sigma.generate_private_key(token)
+
+    print()
+    print("original data : ", text)
     print("token / public key: " + str(token))
     print("private key: " + str(private_key))
-    encoded_text = sigma.start_encode(text, token)
+    encoded_text = sigma.start_encode(text, token, False)
     print("encoded text: " + encoded_text)
-    print("decoded text: " + sigma.start_decode(encoded_text, token, private_key))
+    print("decoded text: " + sigma.start_decode(encoded_text, private_key, False))
+    """
+    original data :  Never Gonna Give You Up
+    token / public key: ada$c!ba
+    private key: 0`1`!2`$0`3`0`
+    encoded text: D£ȶȷmvmzµɏKc££µ§ȵ£§§ȷddqɝKivmɝScwɟWb
+    decoded text: Never Gonna Give You Up
+    """
+    print()
     
