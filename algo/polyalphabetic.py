@@ -1,5 +1,9 @@
-from ciphers import ciphers
-import string
+from algo.ciphers import ciphers
+
+"""
+Credit for the original code 
+https://gist.github.com/ourway/8a567f0c201359237925
+"""
 
 # polyalphabetic cipher used to add second layer encryption into the data
 # send the data to the encode function to encrypt it, with key is the private key of sigma
@@ -11,11 +15,11 @@ class polyalphabetic(ciphers):
         super().__init__()
         self.ALPHABET = self._alphabet.lowercase + self._alphabet.uppercase + self._alphabet.numbers + self._alphabet.symbols + " "
 
-    def encode(self, data):
-        return super().encode(data)
+    # def encode(self, data):
+    #     return super().encode(data)
 
-    def decode(self, data):
-        return super().decode(data)
+    # def decode(self, data):
+    #     return super().decode(data)
 
     def clear_key_noise(self, key):
         return [int(s) for s in key if s.isdigit()]
@@ -68,7 +72,7 @@ class polyalphabetic(ciphers):
         """
         return([self.ALPHABET.find(i) for i in key])
     
-    def encrypt(self, text,key,reverse_operation=False):
+    def encode(self, text,key,reverse_operation=False):
         """
         Encrypts the text with a polyalphabetic cipher.
         >>> encrypt("lorem ipsum dolor sit amet, consectetur adipiscing elit","latine")
@@ -87,7 +91,7 @@ class polyalphabetic(ciphers):
             index_of_key = self.cycle_increment_index(index_of_key,key)
         return(result)
     
-    def decrypt(self, text,key):
+    def decode(self, text,key):
         """
         Decrypts the text previously encrypted with a polyalphabetic cipher.
         >>> decript('wokmz masnu qswok avx lmxb, psysxkgieuk iqmailkvrr eeqg',"latine")
@@ -95,7 +99,7 @@ class polyalphabetic(ciphers):
         >>> decrypt("zcy vcohg jltst aic rarla iaax obj tgeu lil","gvufigfwiufw")
         'the quick brown fox jumps over the lazy dog'
         """
-        return(self.encrypt(text,key,reverse_operation=True))
+        return(self.encode(text,key,reverse_operation=True))
 
 if __name__ == "__main__":
     poly = polyalphabetic()
@@ -105,8 +109,8 @@ if __name__ == "__main__":
     print("data : " , data)
     print("key : " , key)
     
-    encrypted = poly.encrypt(data,key)
-    decrypted= poly.decrypt(encrypted,key)
+    encrypted = poly.encode(data,key)
+    decrypted= poly.decode(encrypted,key)
 
     print("encrypted : ", encrypted)
     print("decrypted : ",decrypted)
