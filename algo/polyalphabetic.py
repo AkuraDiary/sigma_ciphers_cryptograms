@@ -1,4 +1,4 @@
-from algo.ciphers import ciphers
+from sigma_ciphers_cryptograms.algo.ciphers import ciphers
 
 """
 Credit for the original code 
