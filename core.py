@@ -120,7 +120,7 @@ class Sigma(ciphers):
          ## peeling the second wrap of the polyalphabetic cipher
         if wrapPoly: #backward compatible mechanism
             for i in range(len(result)):
-                result = self.poly.decode(result, private_key)
+                result = self.poly.decode(result, _private_key)
                 
 
         return str(result)
