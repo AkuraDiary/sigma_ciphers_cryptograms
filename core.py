@@ -72,7 +72,7 @@ class Sigma(ciphers):
         the_key = ""
         #reversed_token = self.walik(_token)
         the_key = self.extract_token_from_key(_private_key)
-        the_key = self.walik(the_key)
+        #the_key = self.walik(the_key)
         
         result = text
 
@@ -122,13 +122,13 @@ class Sigma(ciphers):
 
     def generate_private_key(self, _token):
         # generate a private key from the token
+        _token=self.walik(_token)
         private_key = self.A1Z26.encode(data = _token)
-        
         return private_key
     
     def extract_token_from_key(self, _key):
         token = self.A1Z26.decode(data = _key)
-        return token 
+        return token
 
     def get_algo_type_from_token(self, _token, _index):
         # read the char in token and return the encoder class key by index of char index in keys
@@ -173,9 +173,13 @@ if __name__ == "__main__":
     text = "Never Gonna Give You Up"
     token = sigma.generate_token()
     private_key = sigma.generate_private_key(token)
+
+    print()
+    print("original data : ", text)
     print("token / public key: " + str(token))
     print("private key: " + str(private_key))
     encoded_text = sigma.start_encode(text, token)
     print("encoded text: " + encoded_text)
-    print("decoded text: " + sigma.start_decode(encoded_text, token, private_key))
+    print("decoded text: " + sigma.start_decode(encoded_text, private_key))
+    print()
     
