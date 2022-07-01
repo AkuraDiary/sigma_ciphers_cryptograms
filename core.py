@@ -49,8 +49,8 @@ class Sigma(ciphers):
 
         # Added first wrap of second Layer encryption with polyalphabetic cipher
         if wrapPoly: #backward compatible mechanism
-            for i in range(len(result)): #
-                result = self.poly.encode(result, self.generate_private_key(token))
+            # for i in range(len(result)): #
+            result = self.poly.encode(result, self.generate_private_key(token))
 
         # encode the text with each char of token
         for i in range(len(token)):
@@ -59,19 +59,12 @@ class Sigma(ciphers):
             # encode the text with the encoder class key
             result = algo.encode(result)
 
-
         #encoding the spaces and enter keys
         for i in range(len(result)):
             if result[i] == " ":
                 result = result.replace(result[i], random.choice(self.space_keys), 1)
             elif text[i] == "\n":
                 result = result.replace(result[i], random.choice(self.enter_keys), 1)
-
-        ## Added second wrap Second Layer encryption with polyalphabetic cipher
-        if wrapPoly: #backward compatible mechanism
-            for i in range(len(token)):
-                result = self.walik(result)
-                result = self.poly.encode(result, self.generate_private_key(token))
 
         #adding the spices
         for i in range(len(result)):
@@ -80,7 +73,12 @@ class Sigma(ciphers):
                 pepper = random.choice(self.pepper)
                 index = result.find(result[i])
                 result = result[:index] + random.choice([salt, pepper]) + result[index:]
-
+        
+        ## Added second wrap Second Layer encryption with polyalphabetic cipher
+        if wrapPoly: #backward compatible mechanism
+            # for i in range(len(token)):
+            result = self.walik(result)
+            result = self.poly.encode(result, self.generate_private_key(token))
 
         return str(result)
     
@@ -92,18 +90,19 @@ class Sigma(ciphers):
         
         result = text
 
+        ## peeling the first wrap of the polyalphabetic cipher
+        if wrapPoly: #backward compatible mechanism
+            # for i in range(len(the_key)):
+            result = self.poly.decode(result, _private_key)
+            result = self.walik(result)
+
         #cleaning the spices
         for i in range(len(text)):
             if (text[i] in self.salt) or (text[i] in self.pepper):
                 result = result.replace(text[i], "")
 
-        ## peeling the first wrap of the polyalphabetic cipher
-        if wrapPoly: #backward compatible mechanism
-            for i in range(len(the_key)):
-                result = self.poly.decode(result, _private_key)
-                result = self.walik(result)
 
-         #checking for spaces and enters (carriage return) symbols first and encode it
+        #checking for spaces and enters (carriage return) symbols first and encode it
         for i in range(len(text)):
             if text[i] in self.space_keys:
                 result = result.replace(text[i], " ")
@@ -119,9 +118,8 @@ class Sigma(ciphers):
         
          ## peeling the second wrap of the polyalphabetic cipher
         if wrapPoly: #backward compatible mechanism
-            for i in range(len(result)):
-                result = self.poly.decode(result, _private_key)
-                
+            # for i in range(len(result)):
+            result = self.poly.decode(result, _private_key)
 
         return str(result)
 
@@ -202,17 +200,27 @@ class Sigma(ciphers):
 if __name__ == "__main__":
     print("""INFO : this is Sigma core module you can use it as a library \nor from interfaces in sigma.py""")
     sigma = Sigma()
-    text = "Never Gonna Give You Up"
-    token =  "ada$c!ba" #sigma.generate_token()
+    text = """Never Gonna Give You Up
+    Never Gonna Let You Down
+    Never gonna Run Around
+    And Desserted You
+    """
+    token =  "dCdcAa!Cad" #sigma.generate_token()
     private_key = sigma.generate_private_key(token)
+
+#     pub key :  dCdcAa!Cad
+#     priv key :  3`0`2`!0`0`2`3`2`3`
+#     data :  ¿ȷȴl§jlxɟrzjpyr
+#     vanila :  hfht nvflun
+#     poly :  0LiZO8PgRvE
 
     print()
     print("original data : ", text)
     print("token / public key: " + str(token))
     print("private key: " + str(private_key))
-    encoded_text = sigma.start_encode(text, token, False)
+    encoded_text = sigma.start_encode(text, token)
     print("encoded text: " + encoded_text)
-    print("decoded text: " + sigma.start_decode(encoded_text, private_key, False))
+    print("decoded text: " + sigma.start_decode(encoded_text, private_key))
     """
     original data :  Never Gonna Give You Up
     token / public key: ada$c!ba
@@ -221,4 +229,6 @@ if __name__ == "__main__":
     decoded text: Never Gonna Give You Up
     """
     print()
+    poly = polyalphabetic()
+    #print(poly.ALPHABET)
     

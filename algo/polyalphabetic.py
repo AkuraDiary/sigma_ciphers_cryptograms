@@ -13,7 +13,7 @@ class polyalphabetic(ciphers):
 
     def __init__(self):
         super().__init__()
-        self.ALPHABET = self._alphabet.lowercase + self._alphabet.uppercase + self._alphabet.numbers + self._alphabet.symbols + " "
+        self.ALPHABET = self._alphabet.lowercase + self._alphabet.uppercase +  self._alphabet.numbers  + self._alphabet.symbols #+  " " #+ string.punctuation  #+ "\r" + "\t" +"\0"+"\\"+ "\n"  + "\"" +"\'"+"\b" 
 
     # def encode(self, data):
     #     return super().encode(data)
@@ -84,11 +84,14 @@ class polyalphabetic(ciphers):
         index_of_key = 0
         result = ""
         for char in text:
-            if not reverse_operation:
-                result += self.shift(char,key[index_of_key])
+            if char not in self.ALPHABET:
+                result += char
             else:
-                result += self.shift(char,- key[index_of_key])
-            index_of_key = self.cycle_increment_index(index_of_key,key)
+                if not reverse_operation:
+                    result += self.shift(char,key[index_of_key])
+                else:
+                    result += self.shift(char,- key[index_of_key])
+                index_of_key = self.cycle_increment_index(index_of_key,key)
         return(result)
     
     def decode(self, text,key):
